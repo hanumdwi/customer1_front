@@ -42,6 +42,10 @@ Route::post('sewa_bus_category_store', 'PemesananController@store');
 Route::get('pemesanan_berhasil/{id}', 'PemesananController@berhasil');
 
 
+Route::get('panduan_pembayaran', 'PanduanPembayaranController@index');
+Route::get('konfirmasi_pembayaran', 'PanduanPembayaranController@show_pembayaran');
+Route::get('konfirmasi_pembayaran_paket', 'PanduanPembayaranController@show_pembayaran_paket');
+
 //===================================================================================
 //====================================================================================
 

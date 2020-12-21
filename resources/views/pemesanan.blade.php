@@ -1,5 +1,9 @@
 @extends('layout/main')
 
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>	
+
 @section('container')
 
     <div class="hero-wrap hero-bread" style="background-image: url('asset/vegfoods/images/baground2.jpeg');">
@@ -26,7 +30,29 @@
               <hr>
             </div>
             <div class="col-md-8 text-left">
+<!-- Trigger the modal with a button -->
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
 
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
             <form action="sewa_bus_category_store" method="post" accept-charset="utf-8">
                {{ csrf_field() }}
                <input type="hidden" name="token_rahasia" value="72827582Uduagd86275gbdahgahgfa">
@@ -34,8 +60,40 @@
                 <p class="alert alert-primary">
                   Isi data pemesanan Anda dengan lengkap dan benar.
                 </p>
-                
-            <div class="form-group row">
+                <div class="form-group row">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <label for="TGL_SEWA" class="col-form-label">Start Date :</label>
+                                        </div>
+                                        <div class="col-lg-6">
+                                        <label for="JAM_SEWA" class="col-form-label">Start Time :</label>
+                                        
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6"><input type="date" class="form-control" id="TGL_SEWA_PAKET" name="TGL_SEWA_PAKET"></div>
+                                        <div class="col-lg-6"><input type="time" class="form-control" id="JAM_SEWA_PAKET" name="JAM_SEWA_PAKET"></div>
+                                    
+                                    </div>
+                                    </div>
+                                    <div class="form-group row">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                        <label for="TGL_AKHIR_SEWA">End Date :</label>
+                                        </div>
+                                        <div class="col-lg-6">
+                                        <label for="JAM_AKHIR_SEWA" class="col-form-label">End Time :</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6"><input type="date" class="form-control create-event-datepicker" id="TGL_AKHIR_SEW_PAKET" name="TGL_AKHIR_SEWA_PAKET"></div>
+                                        <div class="col-lg-6"><input type="time" class="form-control" id="JAM_AKHIR_SEWA_PAKET" name="JAM_AKHIR_SEWA_PAKET"></div>
+                                    
+                                    </div>
+                                    </div>
+                                    </br>
+
+            <!-- <div class="form-group row">
               <label class="col-sm-4 control-label text-right">Tanggal Sewa<span class="text-danger">*</span></label>
               <div class="col-sm-8">
                 <input type="date" name="TANGGAL_SEWA_BUS" class="form-control tanggal">
@@ -47,7 +105,7 @@
               <div class="col-sm-8">
                 <input type="date" name="TANGGAL_AKHIR_SEWA" class="form-control tanggal">
               </div>
-            </div>
+            </div> -->
 
 
             <div class="form-group row">
@@ -150,6 +208,9 @@
   </br>
 </section><!-- End Hero -->
 <script>
+$(document).ready(function() {
+    $('#example').DataTable();
+} );
 
 var barang = <?php echo json_encode($pricelist_sewa_armada); ?>;
 	console.log(barang[0]["NAMA_CATEGORY"]);
