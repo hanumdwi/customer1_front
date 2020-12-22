@@ -1,35 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+  <head>
     <title>PT. MDC Trans Lamongan</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <script src="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"></script>
-    <link href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-
+    
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="asset/vegfoods/css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="asset/vegfoods/css/animate.css">
+    <link rel="stylesheet" href="{{ asset('asset/vegfoods/css/open-iconic-bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/vegfoods/css/animate.css') }}">
     
-    <link rel="stylesheet" href="asset/vegfoods/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="asset/vegfoods/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="asset/vegfoods/css/magnific-popup.css">
+    <link rel="stylesheet" href="{{ asset('asset/vegfoods/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/vegfoods/css/owl.theme.default.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/vegfoods/css/magnific-popup.css') }}">
 
-    <link rel="stylesheet" href="asset/vegfoods/css/aos.css">
+    <link rel="stylesheet" href="{{ asset('asset/vegfoods/css/aos.css') }}">
 
-    <link rel="stylesheet" href="asset/vegfoods/css/ionicons.min.css">
+    <link rel="stylesheet" href="{{ asset('asset/vegfoods/css/ionicons.min.css') }}">
 
-    <link rel="stylesheet" href="asset/vegfoods/css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="asset/vegfoods/css/jquery.timepicker.css">
+    <link rel="stylesheet" href="{{ asset('asset/vegfoods/css/bootstrap-datepicker.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/vegfoods/css/jquery.timepicker.css') }}">
 
     
-    <link rel="stylesheet" href="asset/vegfoods/css/flaticon.css">
-    <link rel="stylesheet" href="asset/vegfoods/css/icomoon.css">
-    <link rel="stylesheet" href="asset/vegfoods/css/style.css">
+    <link rel="stylesheet" href="{{ asset('asset/vegfoods/css/flaticon.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/vegfoods/css/icomoon.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/vegfoods/css/style.css') }}">
+
+    
+<!-- DataTable -->
+<link rel="stylesheet" href="{{ asset('dataTable/datatables.min.css') }}" type="text/css">
   </head>
   <body class="goto-here">
 		<div class="py-1 bg-danger">
@@ -87,11 +89,6 @@
 	  </nav>
     <!-- END nav -->
 
- 
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-		<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 @yield('container')
 
@@ -173,32 +170,52 @@
         </div>
       </div>
     </footer>
-    
-  
 
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-
-  <script src="asset/vegfoods/js/jquery.min.js"></script>
-  <script src="asset/vegfoods/js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="asset/vegfoods/js/popper.min.js"></script>
-  <script src="asset/vegfoods/js/bootstrap.min.js"></script>
-  <script src="asset/vegfoods/js/jquery.easing.1.3.js"></script>
-  <script src="asset/vegfoods/js/jquery.waypoints.min.js"></script>
-  <script src="asset/vegfoods/js/jquery.stellar.min.js"></script>
-  <script src="asset/vegfoods/js/owl.carousel.min.js"></script>
-  <script src="asset/vegfoods/js/jquery.magnific-popup.min.js"></script>
-  <script src="asset/vegfoods/js/aos.js"></script>
-  <script src="asset/vegfoods/js/jquery.animateNumber.min.js"></script>
-  <script src="asset/vegfoods/js/bootstrap-datepicker.js"></script>
-  <script src="asset/vegfoods/js/scrollax.min.js"></script>
+  <script src="{{ asset('asset/vegfoods/js/jquery.min.js') }}"></script>
+  <script src="{{ asset('asset/vegfoods/js/jquery-migrate-3.0.1.min.js') }}"></script>
+  <script src="{{ asset('asset/vegfoods/js/popper.min.js') }}"></script>
+  <script src="{{ asset('asset/vegfoods/js/bootstrap.min.js') }}"></script>
+  <script src="{{ asset('asset/vegfoods/js/jquery.easing.1.3.js') }}"></script>
+  <script src="{{ asset('asset/vegfoods/js/jquery.waypoints.min.js') }}"></script>
+  <script src="{{ asset('asset/vegfoods/js/jquery.stellar.min.js') }}"></script>
+  <script src="{{ asset('asset/vegfoods/js/owl.carousel.min.js') }}"></script>
+  <script src="{{ asset('asset/vegfoods/js/jquery.magnific-popup.min.js') }}"></script>
+  <script src="{{ asset('asset/vegfoods/js/aos.js') }}"></script>
+  <script src="{{ asset('asset/vegfoods/js/jquery.animateNumber.min.js') }}"></script>
+  <script src="{{ asset('asset/vegfoods/js/bootstrap-datepicker.js') }}"></script>
+  <script src="{{ asset('asset/vegfoods/js/scrollax.min.js') }}"></script>
   <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> -->
-  <!-- <script src="asset/vegfoods/js/google-map.js"></script> -->
-  <script src="asset/vegfoods/js/main.js"></script>
-  <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
-  <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
-    
+  <!-- <script src="{{ asset('asset/vegfoods/js/google-map.js') }}"></script> -->
+  <script src="{{ asset('asset/vegfoods/js/main.js') }}"></script>
+  <!-- DataTable -->
+<script src="{{ asset('dataTable/datatables.min.js') }}"></script>
+<script src="{{ asset('asset/vegfoods/js/datatable.js') }}"></script>
+  <!-- <script>
+    $('.modal-body').append('<table class="table datatable" id="dataTables-example">'+
+    '<thead>'+
+        '<tr>'+
+            '<th>ID</th>'+
+            '<th>Pelapor</th>'+
+            '<th>Waktu</th>'+
+            '<th>Judul</th>'+
+        '</tr>'+
+    '</thead>'+
+    '<tbody>'+
+        'sdfgsd'+
+    '</tbody>');
+$('#example').DataTable({
+  processing: true,
+  serverSide: true,
+  ajax: "{{ url('tujuan') }}",
+  columns: [
+            {data: 0, name: 'ID_CATEGORY'},
+            {data: 1, name: 'TUJUAN_SEWA'},
+            {data: 2, name: 'PRICELIST_SEWA'}
+        ]
+});
+</script> -->
   </body>
 </html>

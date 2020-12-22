@@ -303,4 +303,10 @@ class PemesananController extends Controller
     }
 
 
+    public function getTujuan(){
+        $tmp = DB::table('pricelist_sewa_armada')
+        ->get();
+
+        return response()->json(['status'=>'success','data'=>$tmp]);
+    }
 }

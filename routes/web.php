@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('about', 'AboutController@index');
+Route::get('test', 'AboutController@index');
 Route::get('shopbus', 'BusController@show');
 Route::get('detailbus', 'BusController@index');
 Route::get('detailpaket', 'PaketWisataController@index');
@@ -40,6 +40,8 @@ Route::get('cart/{id}', 'CartController@index')->name('cart_index');
 Route::get('pemesanan', 'PemesananController@indexawal');
 Route::post('sewa_bus_category_store', 'PemesananController@store');
 Route::get('pemesanan_berhasil/{id}', 'PemesananController@berhasil');
+Route::get('tujuan','PemesananController@getTujuan');
+
 
 
 Route::get('panduan_pembayaran', 'PanduanPembayaranController@index');
