@@ -188,9 +188,9 @@
   <script src="{{ asset('asset/vegfoods/js/jquery.animateNumber.min.js') }}"></script>
   <script src="{{ asset('asset/vegfoods/js/bootstrap-datepicker.js') }}"></script>
   <script src="{{ asset('asset/vegfoods/js/scrollax.min.js') }}"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAznbmf9fxvDrf8Fnv8MPq09mQN5NVXtZk&callback=initMap&libraries=&v=weekly" defer></script>
+  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAznbmf9fxvDrf8Fnv8MPq09mQN5NVXtZk&callback=initMap&libraries=&v=weekly" defer></script>
   <script src="{{ asset('asset/vegfoods/google-map1.js') }}"></script>
-  <script src="{{ asset('asset/vegfoods/js/google-map.js') }}"></script>
+  <script src="{{ asset('asset/vegfoods/js/google-map.js') }}"></script> -->
   <script src="{{ asset('asset/vegfoods/js/main.js') }}"></script>
   <!-- DataTable -->
 <script src="{{ asset('dataTable/datatables.min.js') }}"></script>

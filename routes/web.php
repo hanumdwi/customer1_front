@@ -40,7 +40,7 @@ Route::get('cart/{id}', 'CartController@index')->name('cart_index');
 
 Route::get('pemesanan', 'PemesananController@indexawal');
 Route::get('pemesanan_paket', 'PemesananController@indexawal_paket');
-Route::post('sewa_bus_category_store', 'PemesananController@store');
+Route::post('pemesanan_store', 'PemesananController@store');
 Route::get('pemesanan_berhasil/{id}', 'PemesananController@berhasil');
 Route::get('tujuan','PemesananController@getTujuan');
 

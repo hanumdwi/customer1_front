@@ -26,160 +26,161 @@
               <h1>Formulir Pemesanan Sewa Armada</h1>
               <hr>
             </div>
-            <div class="col-md-8 text-left">
+        <div class="col-md-8 text-left">
 
-            <form action="sewa_bus_category_store" method="post" accept-charset="utf-8">
-               {{ csrf_field() }}
-               <!-- <input type="hidden" name="token_rahasia" value="72827582Uduagd86275gbdahgahgfa"> -->
-               <input type="hidden" name="STATUS_SEWA" value="">
+            <form action="pemesanan_store" method="post" accept-charset="utf-8">
+                    {{ csrf_field() }}
+                    <!-- <input type="hidden" name="token_rahasia" value="72827582Uduagd86275gbdahgahgfa"> -->
+                    <input type="hidden" name="STATUS_SEWA" value="">
 
-                <p class="alert alert-primary">
-                  Isi data pemesanan Anda dengan lengkap dan benar.
-                </p>
+                      <p class="alert alert-primary">
+                        Isi data pemesanan Anda dengan lengkap dan benar.
+                      </p>
 
-                <div class="form-group row">
-                  <label class="col-sm-4 control-label text-right">Tanggal Sewa<span class="text-danger">*</span></label>
-                  <div class="col-sm-8">
-                    <input type="date" name="TANGGAL_SEWA_BUS" class="form-control tanggal">
-                  </div>
-                </div>
+                      <div class="form-group row">
+                        <label class="col-sm-4 control-label text-right">Tanggal Sewa<span class="text-danger">*</span></label>
+                        <div class="col-sm-8">
+                          <input type="date" name="TANGGAL_SEWA_BUS" class="form-control tanggal">
+                        </div>
+                      </div>
 
-                <div class="form-group row">
-                  <label class="col-sm-4 control-label text-right">Jam Sewa<span class="text-danger">*</span></label>
-                  <div class="col-sm-8">
-                    <input type="time" name="JAM_SEWA" class="form-control tanggal">
-                  </div>
-                </div>
+                      <div class="form-group row">
+                        <label class="col-sm-4 control-label text-right">Jam Sewa<span class="text-danger">*</span></label>
+                        <div class="col-sm-8">
+                          <input type="time" name="JAM_SEWA" class="form-control tanggal">
+                        </div>
+                      </div>
 
-                <div class="form-group row">
-                  <label class="col-sm-4 control-label text-right">Tanggal Akhir Sewa<span class="text-danger">*</span></label>
-                  <div class="col-sm-8">
-                    <input type="date" name="TANGGAL_AKHIR_SEWA" class="form-control tanggal">
-                  </div>
-                </div>
+                      <div class="form-group row">
+                        <label class="col-sm-4 control-label text-right">Tanggal Akhir Sewa<span class="text-danger">*</span></label>
+                        <div class="col-sm-8">
+                          <input type="date" name="TANGGAL_AKHIR_SEWA" class="form-control tanggal">
+                        </div>
+                      </div>
 
-                <div class="form-group row">
-                  <label class="col-sm-4 control-label text-right">Tanggal Akhir Sewa<span class="text-danger">*</span></label>
-                  <div class="col-sm-8">
-                    <input type="time" name="JAM_AKHIR_SEWA" class="form-control tanggal">
-                  </div>
-                </div>
+                      <div class="form-group row">
+                        <label class="col-sm-4 control-label text-right">Tanggal Akhir Sewa<span class="text-danger">*</span></label>
+                        <div class="col-sm-8">
+                          <input type="time" name="JAM_AKHIR_SEWA" class="form-control tanggal">
+                        </div>
+                      </div>
 
-                <div class="form-group row">
-                  <label class="col-sm-4 control-label text-right">Nama Anda<span class="text-danger">*</span></label>
-                  <div class="col-sm-8">
-                    <input type="text" name="NAMA_CUSTOMER" class="form-control" placeholder="Nama Anda" required>
-                  </div>
-                </div>
+                      <div class="form-group row">
+                        <label class="col-sm-4 control-label text-right">Nama Anda<span class="text-danger">*</span></label>
+                        <div class="col-sm-8">
+                          <input type="text" name="NAMA_CUSTOMER" class="form-control" placeholder="Nama Anda" required>
+                        </div>
+                      </div>
 
-                <div class="form-group row">
-                  <label class="col-sm-4 control-label text-right">Nomor HP/Whatsapp <span class="text-danger">*</span></label>
-                  <div class="col-sm-8">
-                    <input type="text" name="TELEPHONE" class="form-control" placeholder="Nomor HP/Whatsapp" required>
-                  </div>
-                </div>
+                      <div class="form-group row">
+                        <label class="col-sm-4 control-label text-right">Nomor HP/Whatsapp <span class="text-danger">*</span></label>
+                        <div class="col-sm-8">
+                          <input type="text" name="TELEPHONE" class="form-control" placeholder="Nomor HP/Whatsapp" required>
+                        </div>
+                      </div>
 
-                <div class="form-group row">
-                  <label class="col-sm-4 control-label text-right">Email</label>
-                  <div class="col-sm-8">
-                    <input type="email" name="EMAIL_CUSTOMER" class="form-control" 
-                    placeholder="Email Anda" required>
-                  </div>
-                </div>
+                      <div class="form-group row">
+                        <label class="col-sm-4 control-label text-right">Email</label>
+                        <div class="col-sm-8">
+                          <input type="email" name="EMAIL_CUSTOMER" class="form-control" 
+                          placeholder="Email Anda" required>
+                        </div>
+                      </div>
 
-                <div class="form-group row">
-                  <label class="col-sm-4 control-label text-right">Alamat</label>
-                  <div class="col-sm-8">
-                    <textarea name="ALAMAT" class="form-control" placeholder="Alamat"></textarea>
-                  </div>
-                </div>
+                      <div class="form-group row">
+                        <label class="col-sm-4 control-label text-right">Alamat</label>
+                        <div class="col-sm-8">
+                          <textarea name="ALAMAT" class="form-control" placeholder="Alamat"></textarea>
+                        </div>
+                      </div>
               
                   <div class="form-group row">
                       <label class="col-sm-4 control-label"></label>
                       <div class="col-sm-8">
                         <div class="btn-group">
-                        
-                        <button type="submit" name="submit" class="btn btn-info btn-lg" value="submit">
-                          <i class="fa fa-times"></i>Submit
+                          <button type="submit" class="btn btn-info btn-lg" value="submit">
+                            <i class="fa fa-times"></i>Submit
+                          </button>
+                        </div>
+                      </div>
+                  </div>
+             
+          
+                    <div class="col-md-4">
+                      <img src="{{ url('asset/vegfoods/images/bismillah.jpg') }}" class="img img-thumbnail img-fluid" >  
+                      <hr>
+                        <p>Anda sudah melakukan pembayaran? Silahkan lakukan <a href="{{ url('konfirmasi') }}">Konfirmasi Pembayaran</a>.</p>
+                      <hr>
+                    </div>
+
+                    <div class="clearfix" align="left">
+                        <button type="button" name="submit" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                          <i class="fa fa-save"></i>Choose Armada
                         </button>
                     </div>
-                </div>
-              </div>
-             
-            </div>
-            <div class="col-md-4">
-                <img src="{{ url('asset/vegfoods/images/bismillah.jpg') }}" class="img img-thumbnail img-fluid" >  
-           
-               <hr>
-                <p>Anda sudah melakukan pembayaran? Silahkan lakukan <a href="{{ url('konfirmasi') }}">Konfirmasi Pembayaran</a>.</p>
-                <hr>
-             </div>
-             <div class="clearfix" align="left">
-                <button type="button" name="submit" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-                  <i class="fa fa-save"></i>Choose Armada
-                </button>
-            </div>
             </br>
             </br>
             <th>&nbsp;</th>
-            <table class="table table-bordered" id="keranjang">
-              <thead class="thead-light">
-                    <tr class="text-center">
-                      
-                      <th>ID Category</th>
-                      <th>Armada</th>
-                      <th>Tujuan Sewa</th>
-                      <th>Price</th>
-                      <th>Quantity</th>
-                      <th>Discount (Rp.)</th>
-                      <th>Sub Total</th>
-                      <th>&nbsp;</th>
-                    </tr>
-                </thead>
-	          </table>
+                    <table class="table table-bordered" id="keranjang">
+                      <thead class="thead-light">
+                            <tr class="text-center">
+                              
+                              <th>ID Category</th>
+                              <th>Armada</th>
+                              <th>Tujuan Sewa</th>
+                              <th>Price</th>
+                              <th>Quantity</th>
+                              <th>Discount (Rp.)</th>
+                              <th>Sub Total</th>
+                              <th>&nbsp;</th>
+                            </tr>
+                        </thead>
+                    </table>
 
             <br>
   
-          <div class="col-xl-5">
-	          <div class="row mt-5 pt-3">
-	          	<div class="col-md-12 d-flex mb-5">
-	          		<div class="cart-detail cart-total p-3 p-md-4">
-	          			<h3 class="billing-heading mb-4">Cart Total</h3>
-	          			<p class="d-flex">
-                    <span>Total</span>
-                    <div class="col-sm-12 col-md-1">
-                      <label>Rp.</label><br>
-                    </div>
-                    <div class="col-sm-12 col-md-2">
-                      <label id="subtotal-val"></label><br>
-                    </div>
-		    					</p>
-		    					<p class="d-flex">
-                    <span>DP (25%)</span>
-                    <div class="col-sm-12 col-md-1">
-                      <label>Rp.</label><br>
-                    </div>
-                    <div class="col-sm-12 col-md-2">
-                      <label id="dpbus"></label><br>
-                    </div>
-		    					</p>
-		    					<hr>
-		    					<p class="d-flex total-price">
-                    <span>Sisa Bayar</span>
-                    <div class="col-sm-12 col-md-1">
-                      <label>Rp.</label><br>
-                    </div>
-                    <div class="col-sm-12 col-md-2">
-                      <label id="total-val"></label><br>
-                    </div>
-		    					</p>
-								</div>
-	          	</div>
+                      <div class="col-xl-5">
+                        <div class="row mt-5 pt-3">
+                          <div class="col-md-12 d-flex mb-5">
+                            <div class="cart-detail cart-total p-3 p-md-4">
+                              <h3 class="billing-heading mb-4">Cart Total</h3>
+                              <p class="d-flex">
+                                <span>Total</span>
+                                <div class="col-sm-12 col-md-1">
+                                  <label>Rp.</label><br>
+                                </div>
+                                <div class="col-sm-12 col-md-2">
+                                  <label id="subtotal-val"></label><br>
+                                </div>
+                              </p>
+                              <p class="d-flex">
+                                <span>DP (25%)</span>
+                                <div class="col-sm-12 col-md-1">
+                                  <label>Rp.</label><br>
+                                </div>
+                                <div class="col-sm-12 col-md-2">
+                                  <label id="dpbus"></label><br>
+                                </div>
+                              </p>
+                              <hr>
+                              <p class="d-flex total-price">
+                                <span>Sisa Bayar</span>
+                                <div class="col-sm-12 col-md-1">
+                                  <label>Rp.</label><br>
+                                </div>
+                                <div class="col-sm-12 col-md-2">
+                                  <label id="total-val"></label><br>
+                                </div>
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
 	
-                <input type="hidden" name="idsewa" id="idsewa" value="">
-                <input type="hidden" name="sub" id="tot">
-                <input type="hidden" name="dpbus" id="depe">
-                <input type="hidden" name="sisa" id="sb">
+                              <input type="hidden" name="idsewa" id="idsewa" value="">
+                              <input type="hidden" name="sub" id="tot">
+                              <input type="hidden" name="dpbus" id="depe">
+                              <input type="hidden" name="sisa" id="sb">
 
             
             
@@ -213,18 +214,20 @@
                                                   </table>
                                                 </div>
                                               </div>
+                                            </div>
                                         </div>
                                       <div>
 
-                 
-            </form>
+                </form>
           </div>
         </div>
       </div>
     </div>
   </div>
+  </div>
   </br>
   </br>
+           
 </section>
 
 <section class="ftco-section bg-light">
