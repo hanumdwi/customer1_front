@@ -12,7 +12,7 @@
 	            <div class="col-md-12 ftco-animate text-center">
 	              <h1 class="mb-2">We serve Special Bus &amp; Tour Packages</h1>
 	              <h2 class="subheading mb-4">We ready all your question</h2>
-	              <p><a href="#" class="btn btn-danger">View Details</a></p>
+	              <p><a href="{{ url('pemesanan') }}" class="btn btn-danger">View Details</a></p>
 	            </div>
 
 	          </div>
@@ -27,7 +27,7 @@
 	            <div class="col-sm-12 ftco-animate text-center">
 	              <h1 class="mb-2">You are satisfied, pride for us</h1>
 	              <h2 class="subheading mb-4">We ready all your question</h2>
-	              <p><a href="#" class="btn btn-danger">View Details</a></p>
+	              <p><a href="{{ url('pemesanan') }}" class="btn btn-danger">View Details</a></p>
 	            </div>
 
 	          </div>
@@ -35,29 +35,7 @@
 	      </div>
 	    </div>
     </section>
-<!-- Trigger the modal with a button -->
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal1">Open Modal</button>
 
-<!-- Modal -->
-<div id="myModal1" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
-      </div>
-      <div class="modal-body">
-        <p>Some text in the modal.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-
-  </div>
-</div>
     <section class="ftco-section">
 			<div class="container">
 				<div class="row no-gutters ftco-services">
@@ -212,7 +190,7 @@
     	</div>
     </section>
 
-    <section class="ftco-section testimony-section">
+	<section class="ftco-section testimony-section">
       <div class="container">
         <div class="row justify-content-center mb-5 pb-3">
           <div class="col-md-7 heading-section ftco-animate text-center">
@@ -226,71 +204,71 @@
             <div class="carousel-testimony owl-carousel">
               <div class="item">
                 <div class="testimony-wrap p-4 pb-5">
-                  <div class="user-img mb-5" style="background-image: url(asset/vegfoods/images/person_1.jpg)">
+                  <div class="user-img mb-5" style="background-image: url(asset/vegfoods/images/tes1.png)">
                     <span class="quote d-flex align-items-center justify-content-center">
                       <i class="icon-quote-left"></i>
                     </span>
                   </div>
                   <div class="text text-center">
                     <p class="mb-5 pl-4 line">Tempat sewa bus pariwisata di Lamongan yang paling saya rekomendasikan. Bus terbaru membuat penumpang nyaman dalam perjalanan.</p>
-                    <p class="name">Garreth Smith</p>
-                    <span class="position">Marketing Manager</span>
+                    <p class="name">Our Customer</p>
+                    <!-- <span class="position">Marketing Manager</span> -->
                   </div>
                 </div>
               </div>
               <div class="item">
                 <div class="testimony-wrap p-4 pb-5">
-                  <div class="user-img mb-5" style="background-image: url(asset/vegfoods/images/person_2.jpg)">
+                  <div class="user-img mb-5" style="background-image: url(asset/vegfoods/images/tes2.png)">
                     <span class="quote d-flex align-items-center justify-content-center">
                       <i class="icon-quote-left"></i>
                     </span>
                   </div>
                   <div class="text text-center">
                     <p class="mb-5 pl-4 line">lokasi bersih luas bisnya bagus dan baru.</p>
-                    <p class="name">Garreth Smith</p>
-                    <span class="position">Interface Designer</span>
+                    <p class="name">Our Customer</p>
+                    <!-- <span class="position">Interface Designer</span> -->
                   </div>
                 </div>
               </div>
               <div class="item">
                 <div class="testimony-wrap p-4 pb-5">
-                  <div class="user-img mb-5" style="background-image: url(asset/vegfoods/images/person_3.jpg)">
+                  <div class="user-img mb-5" style="background-image: url(asset/vegfoods/imagestes3.png)">
                     <span class="quote d-flex align-items-center justify-content-center">
                       <i class="icon-quote-left"></i>
                     </span>
                   </div>
                   <div class="text text-center">
                     <p class="mb-5 pl-4 line">Tempat saiya bekerja tuk mencari nafkah.</p>
-                    <p class="name">Garreth Smith</p>
-                    <span class="position">UI Designer</span>
+                    <p class="name">Our Customer</p>
+                    <!-- <span class="position">UI Designer</span> -->
                   </div>
                 </div>
               </div>
               <div class="item">
                 <div class="testimony-wrap p-4 pb-5">
-                  <div class="user-img mb-5" style="background-image: url(asset/vegfoods/images/person_1.jpg)">
+                  <div class="user-img mb-5" style="background-image: url(asset/vegfoods/images/TES4.png)">
                     <span class="quote d-flex align-items-center justify-content-center">
                       <i class="icon-quote-left"></i>
                     </span>
                   </div>
                   <div class="text text-center">
                     <p class="mb-5 pl-4 line">Paling nyaman, bikin nagih mau tour terus.</p>
-                    <p class="name">Garreth Smith</p>
-                    <span class="position">Web Developer</span>
+                    <p class="name">Our Customer</p>
+                    <!-- <span class="position">Web Developer</span> -->
                   </div>
                 </div>
               </div>
               <div class="item">
                 <div class="testimony-wrap p-4 pb-5">
-                  <div class="user-img mb-5" style="background-image: url(asset/vegfoods/images/person_1.jpg)">
+                  <div class="user-img mb-5" style="background-image: url(asset/vegfoods/images/TES4.png)">
                     <span class="quote d-flex align-items-center justify-content-center">
                       <i class="icon-quote-left"></i>
                     </span>
                   </div>
                   <div class="text text-center">
                     <p class="mb-5 pl-4 line">See you next holiday MDC Trans Lamongan.</p>
-                    <p class="name">Garreth Smith</p>
-                    <span class="position">System Analyst</span>
+                    <p class="name">Our Customer</p>
+                    <!-- <span class="position">System Analyst</span> -->
                   </div>
                 </div>
               </div>
@@ -299,5 +277,10 @@
         </div>
       </div>
     </section>
+
+    <section class="ftco-section bg-light">
+
+	</section>
+
 
 @endsection

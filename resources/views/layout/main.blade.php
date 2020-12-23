@@ -70,18 +70,19 @@
 	          <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Information</a>
               <div class="dropdown-menu" aria-labelledby="dropdown04">
-              	<a class="dropdown-item" href="{{ url('shopbus') }}">Armada</a>
+              	<a class="dropdown-item" href="{{ url('detailbus') }}">Armada</a>
                 <!-- <a class="dropdown-item" href="{{ url('detailbus') }}">Informasi Armada</a> -->
-                <a class="dropdown-item" href="{{ url('shoppaket') }}">Paket Wisata</a>
+                <a class="dropdown-item" href="{{ url('detailpaket') }}">Paket Wisata</a>
                 <!-- <a class="dropdown-item" href="{{ url('detailpaket') }}">Informasi Paket Wisata</a> -->
                 <!-- <a class="dropdown-item" href="{{ url('cart') }}">Cart</a> -->
-                <a class="dropdown-item" href="{{ url('checkout') }}">Booking</a>
+                <a class="dropdown-item" href="{{ url('pemesanan') }}">Booking Bus</a>
+                <a class="dropdown-item" href="{{ url('pemesanan_paket') }}">Booking Packages</a>
               </div>
             </li>
 	          <li class="nav-item"><a href="{{ url('about') }}" class="nav-link">About</a></li>
 	          <!-- <li class="nav-item"><a href="{{ url('testimony') }}" class="nav-link">Testimony</a></li> -->
 	          <li class="nav-item"><a href="{{ url('contact') }}" class="nav-link">Contact</a></li>
-	          <li class="nav-item cta cta-colored"><a href="{{ url('cart') }}" class="nav-link"><span class="icon-bus"></span></a></li>
+	          <li class="nav-item cta cta-colored"><a href="{{ url('pemesanan') }}" class="nav-link"><span class="icon-bus"></span></a></li>
 
 	        </ul>
 	      </div>
@@ -187,8 +188,9 @@
   <script src="{{ asset('asset/vegfoods/js/jquery.animateNumber.min.js') }}"></script>
   <script src="{{ asset('asset/vegfoods/js/bootstrap-datepicker.js') }}"></script>
   <script src="{{ asset('asset/vegfoods/js/scrollax.min.js') }}"></script>
-  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> -->
-  <!-- <script src="{{ asset('asset/vegfoods/js/google-map.js') }}"></script> -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAznbmf9fxvDrf8Fnv8MPq09mQN5NVXtZk&callback=initMap&libraries=&v=weekly" defer></script>
+  <script src="{{ asset('asset/vegfoods/google-map1.js') }}"></script>
+  <script src="{{ asset('asset/vegfoods/js/google-map.js') }}"></script>
   <script src="{{ asset('asset/vegfoods/js/main.js') }}"></script>
   <!-- DataTable -->
 <script src="{{ asset('dataTable/datatables.min.js') }}"></script>

@@ -23,7 +23,7 @@
         <div class="kotak">
           <div class="row">
             <div class="col-md-12 text-center">
-              <h1>Formulir Pemesanan Sewa Armada</h1>
+              <h1>Formulir Pemesanan Paket Wisata</h1>
               <hr>
             </div>
             <div class="col-md-8 text-left">
@@ -40,28 +40,28 @@
                 <div class="form-group row">
                   <label class="col-sm-4 control-label text-right">Tanggal Sewa<span class="text-danger">*</span></label>
                   <div class="col-sm-8">
-                    <input type="date" name="TANGGAL_SEWA_BUS" class="form-control tanggal">
+                    <input type="date" name="TANGGAL_SEWA_PAKET" class="form-control tanggal">
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <label class="col-sm-4 control-label text-right">Jam Sewa<span class="text-danger">*</span></label>
                   <div class="col-sm-8">
-                    <input type="time" name="JAM_SEWA" class="form-control tanggal">
+                    <input type="time" name="JAM_SEWA_PAKET" class="form-control tanggal">
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <label class="col-sm-4 control-label text-right">Tanggal Akhir Sewa<span class="text-danger">*</span></label>
                   <div class="col-sm-8">
-                    <input type="date" name="TANGGAL_AKHIR_SEWA" class="form-control tanggal">
+                    <input type="date" name="TANGGAL_AKHIR_SEWA_PAKET" class="form-control tanggal">
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <label class="col-sm-4 control-label text-right">Tanggal Akhir Sewa<span class="text-danger">*</span></label>
                   <div class="col-sm-8">
-                    <input type="time" name="JAM_AKHIR_SEWA" class="form-control tanggal">
+                    <input type="time" name="JAM_AKHIR_SEWA_PAKET" class="form-control tanggal">
                   </div>
                 </div>
 
@@ -116,7 +116,7 @@
              </div>
              <div class="clearfix" align="left">
                 <button type="button" name="submit" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-                  <i class="fa fa-save"></i>Choose Armada
+                  <i class="fa fa-save"></i>Choose Packages
                 </button>
             </div>
             </br>
@@ -126,10 +126,10 @@
               <thead class="thead-light">
                     <tr class="text-center">
                       
-                      <th>ID Category</th>
-                      <th>Armada</th>
-                      <th>Tujuan Sewa</th>
-                      <th>Price</th>
+                      <th>Paket Wisata</th>
+                      <th>Tempat Kunjung</th>
+                      <th>Harga (/orang)</th>
+                      <th>Harga Paket</th>
                       <th>Quantity</th>
                       <th>Discount (Rp.)</th>
                       <th>Sub Total</th>
@@ -188,7 +188,7 @@
                                         <div class="modal-dialog modal-xl">
                                           <div class="modal-content">
                                             <div class="modal-header">
-                                              <h4 class="modal-title" id="myModalLabel">Choose Armada</h4>
+                                              <h4 class="modal-title" id="myModalLabel">Choose Packages</h4>
                                               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                             </div>
                                               <div class="modal-body">
@@ -196,17 +196,19 @@
                                                     <table id="example1" class="table table-striped">
                                                     <thead>
                                                       <tr role="row">
-                                                        <th class="datatable-nosort sorting_disabled" rowspan="1" colspan="1">Armada</th>
-                                                        <th class="datatable-nosort sorting_disabled" rowspan="1" colspan="1">Tujuan Sewa</th>
-                                                        <th class="datatable-nosort sorting_disabled" rowspan="1" colspan="1">Price</th>
+                                                        <th class="datatable-nosort sorting_disabled" rowspan="1" colspan="1">Paket Wisata</th>
+                                                        <th class="datatable-nosort sorting_disabled" rowspan="1" colspan="1">Harga (/orang)</th>
+                                                        <th class="datatable-nosort sorting_disabled" rowspan="1" colspan="1">Harga Paket</th>
+                                                        <th class="datatable-nosort sorting_disabled" rowspan="1" colspan="1">Tempat Kunjung</th>
                                                       </tr>
                                                     </thead>
                                                     <tbody>
-                                                      @foreach( $pricelist_sewa_armada as $p )
-                                                      <tr role="row" class="odd" onclick="pilihBarang('{{ $p -> ID_PRICELIST }}')" style="cursor:pointer">
-                                                        <td value="{{$p->ID_CATEGORY}}">{{ $p->NAMA_CATEGORY }}</td>
-                                                        <td>{{ $p->TUJUAN_SEWA }}</td>
-                                                        <td>Rp <?php echo number_format($p->PRICELIST_SEWA,'0',',','.'); ?></td>
+                                                      @foreach( $paket_wisata as $p )
+                                                      <tr role="row" class="odd" onclick="pilihBarang('{{ $p -> ID_PAKET }}')" style="cursor:pointer">
+                                                        <td>{{ $p->NAMA_PAKET }}</td>
+                                                        <td>Rp <?php echo number_format($p->HARGA_PAKET,'0',',','.'); ?></td>
+                                                        <td>Rp <?php echo number_format($p->HARGA_JUAL,'0',',','.'); ?></td>
+                                                        <td>{{ $p->TEMPAT_KUNJUNG }}</td>
                                                       </tr>
                                                       @endforeach
                                                     </tbody>
@@ -230,11 +232,11 @@
 <section class="ftco-section bg-light">
 
 </section>
-
+  
 <script>
 
-var barang = <?php echo json_encode($pricelist_sewa_armada); ?>;
-	console.log(barang[0]["NAMA_CATEGORY"]);
+var barang = <?php echo json_encode($paket_wisata); ?>;
+	console.log(barang[0]["NAMA_PAKET"]);
 	var colnum=0;
 
 	function getVal(event){
@@ -245,7 +247,7 @@ var barang = <?php echo json_encode($pricelist_sewa_armada); ?>;
 	function pilihBarang(id){
 		var index;
 		for(var i=0;i<barang.length;i++){
-			if(barang[i]["ID_PRICELIST"]==id){
+			if(barang[i]["ID_PAKET"]==id){
 				console.log(barang[i]);
 				index=i;
 				break;
@@ -269,13 +271,13 @@ var barang = <?php echo json_encode($pricelist_sewa_armada); ?>;
 		var cell8 = row.insertCell(7);
 		
 		console.log(index);
-		cell1.innerHTML = '<input type="hidden" name="id['+barang[index]["ID_PRICELIST"]+']" value="'+barang[index]["ID_PRICELIST"]+'">'+barang[index]["ID_CATEGORY"];
-		cell2.innerHTML = '<input type="hidden" name="cat['+barang[index]["ID_PRICELIST"]+']" value="'+barang[index]["ID_CATEGORY"]+'">'+barang[index]["NAMA_CATEGORY"];
-		cell3.innerHTML = '<input type="hidden" name="tj['+barang[index]["ID_PRICELIST"]+']" value="'+barang[index]["TUJUAN_SEWA"]+'">'+barang[index]["TUJUAN_SEWA"];	
-		cell4.innerHTML = '<input type="hidden" id="harga'+barang[index]["ID_PRICELIST"]+'" name="harga['+barang[index]["ID_PRICELIST"]+']" value="'+barang[index]["PRICELIST_SEWA"]+'">'+barang[index]["PRICELIST_SEWA"];
-		cell5.innerHTML = '<input type="number" name="qty['+barang[index]["ID_PRICELIST"]+']" value="1" oninput="recount(\''+barang[index]["ID_PRICELIST"]+'\')" id="qty'+barang[index]["ID_PRICELIST"]+'" style="background:secondary; border:none; text-align:left; width=100%">';	
-    cell6.innerHTML = '<input class="discount" type="number" name="discount['+barang[index]["ID_PRICELIST"]+']" value="0" oninput="recount(\''+barang[index]["ID_PRICELIST"]+'\')" id="discount'+barang[index]["ID_PRICELIST"]+'" style="background:primary; border:none; text-align:left; width=100%">';	
-		cell7.innerHTML = '<input type="hidden" class="subtotal" name="subtotal['+barang[index]["ID_PRICELIST"]+']" value="'+barang[index]["PRICELIST_SEWA"]+'" id="subtotal'+barang[index]["ID_PRICELIST"]+'"><span id="subtotalval'+barang[index]["ID_PRICELIST"]+'">'+barang[index]["PRICELIST_SEWA"]+'</span>';
+		cell1.innerHTML = '<input type="hidden" name="id['+barang[index]["ID_PAKET"]+']" value="'+barang[index]["ID_PAKET"]+'">'+barang[index]["NAMA_PAKET"];
+		cell2.innerHTML = '<input type="hidden" name="tj['+barang[index]["ID_PAKET"]+']" value="'+barang[index]["TEMPAT_KUNJUNG"]+'">'+barang[index]["TEMPAT_KUNJUNG"];	
+		cell3.innerHTML = '<input type="hidden" name="cat['+barang[index]["ID_PAKET"]+']" value="'+barang[index]["HARGA_PAKET"]+'">'+barang[index]["HARGA_PAKET"];
+		cell4.innerHTML = '<input type="hidden" id="harga'+barang[index]["ID_PAKET"]+'" name="harga['+barang[index]["ID_PAKET"]+']" value="'+barang[index]["HARGA_JUAL"]+'">'+barang[index]["HARGA_JUAL"];
+		cell5.innerHTML = '<input type="number" name="qty['+barang[index]["ID_PAKET"]+']" value="1" oninput="recount(\''+barang[index]["ID_PAKET"]+'\')" id="qty'+barang[index]["ID_PAKET"]+'" style="background:secondary; border:none; text-align:left; width=100%">';	
+        cell6.innerHTML = '<input class="discount" type="number" name="discount['+barang[index]["ID_PAKET"]+']" value="0" oninput="recount(\''+barang[index]["ID_PAKET"]+'\')" id="discount'+barang[index]["ID_PAKET"]+'" style="background:primary; border:none; text-align:left; width=100%">';	
+		cell7.innerHTML = '<input type="hidden" class="subtotal" name="subtotal['+barang[index]["ID_PAKET"]+']" value="'+barang[index]["HARGA_JUAL"]+'" id="subtotal'+barang[index]["ID_PAKET"]+'"><span id="subtotalval'+barang[index]["ID_PAKET"]+'">'+barang[index]["HARGA_JUAL"]+'</span>';
 		cell8.innerHTML = '<button onclick="hapusEl(\''+id+'\')" class="btn btn-danger btn-block text-uppercase">X</button>';
 		total();
 		

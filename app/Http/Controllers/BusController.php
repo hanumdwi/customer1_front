@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\About;
+use App\Bus;
 use Illuminate\Http\Request;
 
-class AboutController extends Controller
+class BusController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,12 +14,12 @@ class AboutController extends Controller
      */
     public function index()
     {
-        return view('about');
+        return view('detailbus');
     }
 
-    public function index_contact()
+    public function index_paket()
     {
-        return view('contact');
+        return view('detailpaket');
     }
 
     /**
@@ -46,21 +46,21 @@ class AboutController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\About  $about
+     * @param  \App\Bus  $bus
      * @return \Illuminate\Http\Response
      */
-    public function show(About $about)
+    public function show(Bus $bus)
     {
-        //
+        return view('shopbus');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\About  $about
+     * @param  \App\Bus  $bus
      * @return \Illuminate\Http\Response
      */
-    public function edit(About $about)
+    public function edit(Bus $bus)
     {
         //
     }
@@ -69,10 +69,10 @@ class AboutController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\About  $about
+     * @param  \App\Bus  $bus
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, About $about)
+    public function update(Request $request, Bus $bus)
     {
         //
     }
@@ -80,10 +80,10 @@ class AboutController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\About  $about
+     * @param  \App\Bus  $bus
      * @return \Illuminate\Http\Response
      */
-    public function destroy(About $about)
+    public function destroy(Bus $bus)
     {
         //
     }

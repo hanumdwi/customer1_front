@@ -28,7 +28,13 @@ class PemesananController extends Controller
 
     public function indexawal()
     {
-        $sewa_bus= Sewa_Bus::all();
+        //$sewa_bus= Sewa_Bus::all();
+        $sewa_bus=DB::table('sewa_bus')
+        ->join('customer', 'sewa_bus.ID_CUSTOMER', '=', 'customer.ID_CUSTOMER')
+        ->join('pengguna', 'sewa_bus.ID_PENGGUNA', '=', 'pengguna.ID_PENGGUNA')
+        ->select('sewa_bus.*', 'customer.*', 'pengguna.*')
+        ->get();
+        
         $customer= customer::all();
 
         $category_armada=DB::table('category_armada')->get();
@@ -44,13 +50,29 @@ class PemesananController extends Controller
         ->join('pricelist_sewa_armada','sewa_bus_category.ID_PRICELIST', '=', 'pricelist_sewa_armada.ID_PRICELIST')
         ->join('category_armada', 'pricelist_sewa_armada.ID_CATEGORY', '=', 'category_armada.ID_CATEGORY')
         ->select('sewa_bus_category.ID_SEWA_BUS', 'sewa_bus_category.ID_PRICELIST',
-        'sewa_bus_category.QUANTITY', 'sewa_bus_category.TOTAL',
-        'category_armada.NAMA_CATEGORY', 'pricelist_sewa_armada.TUJUAN_SEWA', 'pricelist_sewa_armada.PRICELIST_SEWA')
+        'sewa_bus_category.QUANTITY', 'sewa_bus_category.TOTAL', 'category_armada.NAMA_CATEGORY', 
+        'pricelist_sewa_armada.TUJUAN_SEWA', 'pricelist_sewa_armada.PRICELIST_SEWA', 'sewa_bus.STATUS_SEWA')
         ->get();
 
 
         return view('pemesanan', ['sewa_bus' =>$sewa_bus,'customer'=>$customer],
         ['sewa_bus_category'=>$sewa_bus_category,'pricelist_sewa_armada'=>$pricelist_sewa_armada, 'category_armada'=>$category_armada]);
+    }
+
+    public function indexawal_paket()
+    {
+        //$sewa_bus= Sewa_Bus::all();
+        $sewa_paket_wisata=DB::table('sewa_paket_wisata')
+        ->join('customer', 'sewa_paket_wisata.ID_CUSTOMER', '=', 'customer.ID_CUSTOMER')
+        ->join('pengguna', 'sewa_paket_wisata.ID_PENGGUNA', '=', 'pengguna.ID_PENGGUNA')
+        ->join('paket_wisata', 'sewa_paket_wisata.ID_PAKET', '=', 'sewa_paket_wisata.ID_PAKET' )
+        ->select('sewa_paket_wisata.*', 'customer.*', 'pengguna.*', 'paket_wisata.*')
+        ->get();
+
+        $paket_wisata = Paket_Wisata::all();
+
+
+        return view('pemesanan_paket', ['sewa_paket_wisata' =>$sewa_paket_wisata,'paket_wisata'=>$paket_wisata]);
     }
 
 
@@ -174,26 +196,43 @@ class PemesananController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id)
+    public function store(Request $request)
     {
         //dd($request->all());
-        $sewa_bus= Sewa_Bus::find($id);
-//dd($request->id);
+
+        DB::table('customer')->insert([
+            'NAMA_CUSTOMER'   => $request->nama,
+            'EMAIL_CUSTOMER'  => $request->email,
+            'TELEPHONE'       => $request->telephone,
+            'ALAMAT'          => $request->alamat
+        ]);
+
+        DB::table('sewa_bus')->insert([
+            'ID_SEWA_BUS'       => $request->ID_SEWA_BUS,
+            'TGL_SEWA_BUS'      => $request->TGL_SEWA,
+            'TGL_AKHIR_SEWA'    => $request->TGL_AKHIR_SEWA,
+            'ID_CUSTOMER'       => $request->ID_CUSTOMER,
+            'ID_PENGGUNA'       => $request->ID_PENGGUNA,
+            'SISA_SEWA_BUS'     => $request->HARGA_SEWA_BUS,
+            'JAM_SEWA'          => $request->JAM_SEWA,
+            'JAM_AKHIR_SEWA'    => $request->JAM_AKHIR_SEWA,
+            'DP_BUS'            =>  $request->DP_SEWA,
+            'SISA_SEWA_BUS'     =>  $request->SISA_SEWA_BUS,
+            'total_payment'     => $request->total_payment,
+            'STATUS_SEWA'       => $request->statussewa
+            
+        ]);
+
         foreach ($request['id'] as $key) {
             DB::table('sewa_bus_category')->insert([
-            'ID_SEWA_BUS'   => $id,
-            'ID_PRICELIST'  => $key,
-            
-            // 'NAMA_CATEGORY' => $request['cat'][$key],
-            // 'TUJUAN_SEWA' => $request['tj'][$key],
-            'QUANTITY' => $request['qty'][$key],
-            //'PRICELIST_SEWA'=> $request['harga'][$key],
-            'DISCOUNT'=> $request['discount'][$key],
-            'TOTAL'=> $request['subtotal'][$key]
-            // 'DP_BUS'=> $request['dpbus'][$key],
-            // 'SISA_BAYAR'=> $request['sisabayar'][$key]
-        ]);
-    }
+                'ID_SEWA_BUS'   => $id,
+                'ID_PRICELIST'  => $key,
+                'QUANTITY' => $request['qty'][$key],
+                'DISCOUNT'=> $request['discount'][$key],
+                'TOTAL'=> $request['subtotal'][$key]
+            ]);
+        }
+
             $sewa_bus_category=DB::table('sewa_bus_category')
             ->join('pricelist_sewa_armada','sewa_bus_category.ID_PRICELIST','=','pricelist_sewa_armada.ID_PRICELIST')
             ->join('category_armada','pricelist_sewa_armada.ID_CATEGORY', '=', 'category_armada.ID_CATEGORY')
@@ -213,74 +252,34 @@ class PemesananController extends Controller
 
 
 
-       return Redirect::back()->with(['sewa_bus_category'=>$sewa_bus_category, 'total'=>$total, 'subtotal'=>$subtotal, 
-       'sisa_bayar'=>$sisa_bayar, 'sewa_bus' =>$sewa_bus]);       
-    //    return redirect('invoice', ['sewa_bus_category'=>$sewa_bus_category, 'total'=>$total, 'subtotal'=>$subtotal, 'sisa_bayar'=>$sisa_bayar]);       
+       return redirect('pemesanan', ['sewa_bus_category'=>$sewa_bus_category, 'total'=>$total, 'subtotal'=>$subtotal, 
+       'sisa_bayar'=>$sisa_bayar, 'sewa_bus' =>$sewa_bus, 'customer'=>$customer]);       
     }
 
-
-    public function store_pembayaran(Request $request, $id)
+    public function store_paket(Request $request)
     {
-        //dd($request->all());
-        $sewa_bus= Sewa_Bus::find($id);
-       
-        if($request->hasFile('file')) {
+            DB::table('customer')->insert([
+                'NAMA_CUSTOMER'   => $request->nama,
+                'EMAIL_CUSTOMER'  => $request->email,
+                'TELEPHONE'       => $request->telephone,
+                'ALAMAT'          => $request->alamat
+            ]);
 
-            $file = $request->file('file');
-        
-            $fileName = $file->getClientOriginalName();
+            DB::table('sewa_paket_wisata')->insert([
+                'TGL_SEWA_PAKET'        => $request->TGL_SEWA_PAKET,
+                'TGL_AKHIR_SEWA_PAKET'  => $request->TGL_AKHIR_SEWA_PAKET,
+                'ID_PAKET'              => $request->ID_PAKET,
+                'ID_CUSTOMER'           => $request->ID_CUSTOMER,
+                'ID_PENGGUNA'           => $request->ID_PENGGUNA,
+                'JAM_SEWA_PAKET'        => $request->JAM_SEWA_PAKET,
+                'JAM_AKHIR_SEWA_PAKET'  => $request->JAM_AKHIR_SEWA_PAKET,
+                'DP_PAKET'              => $request->DP_PAKET,
+                'SISA_SEWA_PAKET'       => $request->SISA_SEWA_PAKET,
+                'STATUS_PAKET_WISATA'   =>  $request->STATUS_PAKET_WISATA
+            ]);
 
-            $bayar = new Pembayaran;
-                $bayar->CARA_BAYAR            = $request->carabayar;
-                $bayar->ID_REKENING           = $request->ID_REKENING;
-                $bayar->TGL_BAYAR             = $request->tglbayar;
-                $bayar->JUMLAH_BAYAR          = $request->jumlahbayar;
-                $bayar->ID_SEWA_BUS           = $id;
-                $bayar->STATUS_BAYAR          = 1;
-                $bayar->NAMA_BANK_PENGIRIM    = $request->namabank;
-                $bayar->NOREK_PENGIRIM        = $request->norek;
-                $bayar->KETERANGAN            = $request->keterangan;
-                $bayar->ATAS_NAMA             = $request->pemilikrekening;
-                $bayar->BUKTI_TF              = $fileName;
-                $file->move(public_path().'/buktiTF', $fileName);
-                $bayar->save();
-        }
- 
-        return Redirect::back()->with('insert','data berhasil di tambah');
+             return redirect('pemesanan_paket');
     }
-
-    public function store_pembayaran_paket(Request $request, $id)
-    {
-        //dd($request->all());
-        $sewa_paket_wisata= Sewa_Paket_Wisata::find($id);
-       
-        if($request->hasFile('file')) {
-
-            $file = $request->file('file');
-        
-            $fileName = $file->getClientOriginalName();
-
-            $bayar_paket = new Pembayaran_Paket;
-                $bayar_paket->CARA_BAYAR            = $request->carabayar;
-                $bayar_paket->ID_REKENING           = $request->ID_REKENING;
-                $bayar_paket->TGL_BAYAR             = $request->tglbayar;
-                $bayar_paket->JUMLAH_BAYAR          = $request->jumlahbayar;
-                $bayar_paket->ID_SEWA_PAKET         = $id;
-                $bayar_paket->STATUS_BAYAR          = 1;
-                $bayar_paket->NAMA_BANK_PENGIRIM    = $request->namabank;
-                $bayar_paket->NOREK_PENGIRIM        = $request->norek;
-                $bayar_paket->KETERANGAN            = $request->keterangan;
-                $bayar_paket->ATAS_NAMA             = $request->pemilikrekening;
-                $bayar_paket->BUKTI_TF              = $fileName;
-                $file->move(public_path().'/buktiTF_Paket', $fileName);
-                $bayar_paket->save();
-        }
-        
-
-        return Redirect::back()->with('insert','data berhasil di tambah');
-    }
-
- 
 
     public function cetak_pdf($id)
     {

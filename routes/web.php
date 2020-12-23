@@ -17,10 +17,11 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('test', 'AboutController@index');
+Route::get('about', 'AboutController@index');
+Route::get('contact', 'AboutController@index_contact');
 Route::get('shopbus', 'BusController@show');
 Route::get('detailbus', 'BusController@index');
-Route::get('detailpaket', 'PaketWisataController@index');
+Route::get('detailpaket', 'BusController@index_paket');
 
 //Customer
 Route::get('datacustomer','CustomerController@index');
@@ -38,6 +39,7 @@ Route::get('cart', 'CartController@indexcart');
 Route::get('cart/{id}', 'CartController@index')->name('cart_index');
 
 Route::get('pemesanan', 'PemesananController@indexawal');
+Route::get('pemesanan_paket', 'PemesananController@indexawal_paket');
 Route::post('sewa_bus_category_store', 'PemesananController@store');
 Route::get('pemesanan_berhasil/{id}', 'PemesananController@berhasil');
 Route::get('tujuan','PemesananController@getTujuan');
