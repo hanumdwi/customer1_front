@@ -75,7 +75,7 @@
                 <div class="form-group row">
                   <label class="col-sm-4 control-label text-right">Nomor HP/Whatsapp <span class="text-danger">*</span></label>
                   <div class="col-sm-8">
-                    <input type="text" name="TELEPHONE" class="form-control" placeholder="Nomor HP/Whatsapp" required>
+                    <input type="text" value="" name="TELEPHONE" class="form-control" placeholder="Nomor HP/Whatsapp" required>
                   </div>
                 </div>
 

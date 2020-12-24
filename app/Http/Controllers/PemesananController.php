@@ -66,10 +66,10 @@ class PemesananController extends Controller
         ->join('customer', 'sewa_paket_wisata.ID_CUSTOMER', '=', 'customer.ID_CUSTOMER')
         ->join('pengguna', 'sewa_paket_wisata.ID_PENGGUNA', '=', 'pengguna.ID_PENGGUNA')
         ->join('paket_wisata', 'sewa_paket_wisata.ID_PAKET', '=', 'sewa_paket_wisata.ID_PAKET' )
-        ->select('sewa_paket_wisata.*', 'customer.*', 'pengguna.*', 'paket_wisata.*')
+        ->select('sewa_paket_wisata.*', 'customer.*', 'pengguna.*', 'paket_wisata.*','sewa_paket_wisata.ID_PAKET')
         ->get();
 
-        $paket_wisata = Paket_Wisata::all();
+        $paket_wisata = DB::table('paket_wisata')->get();
 
 
         return view('pemesanan_paket', ['sewa_paket_wisata' =>$sewa_paket_wisata,'paket_wisata'=>$paket_wisata]);
@@ -292,25 +292,35 @@ class PemesananController extends Controller
         //         ]);
         //     }
 
-            DB::table('sewa_paket_wisata')->insert([
-                'TGL_SEWA_PAKET'        => $request->TGL_SEWA_PAKET,
-                'TGL_AKHIR_SEWA_PAKET'  => $request->TGL_AKHIR_SEWA_PAKET,
-                // 'ID_PAKET'              => $t,
-                'ID_CUSTOMER'           => $idc1,
-                'ID_PENGGUNA'           => 'USR001',
-                'JAM_SEWA_PAKET'        => $request->JAM_SEWA_PAKET,
-                'JAM_AKHIR_SEWA_PAKET'  => $request->JAM_AKHIR_SEWA_PAKET,
-                'DP_PAKET'              => $request->DP_PAKET,
-                'SISA_SEWA_PAKET'       => $request->SISA_SEWA_PAKET,
-                'STATUS_PAKET_WISATA'   => 'Booking'
-            ]);
+            // DB::table('sewa_paket_wisata')->insert([
+            //     'TGL_SEWA_PAKET'        => $request->TGL_SEWA_PAKET,
+            //     'TGL_AKHIR_SEWA_PAKET'  => $request->TGL_AKHIR_SEWA_PAKET,
+            //     // 'ID_PAKET'              => $t,
+            //     'ID_CUSTOMER'           => $idc1,
+            //     'ID_PENGGUNA'           => 'USR001',
+            //     'JAM_SEWA_PAKET'        => $request->JAM_SEWA_PAKET,
+            //     'JAM_AKHIR_SEWA_PAKET'  => $request->JAM_AKHIR_SEWA_PAKET,
+            //     'DP_PAKET'              => $request->DP_PAKET,
+            //     'SISA_SEWA_PAKET'       => $request->SISA_SEWA_PAKET,
+            //     'STATUS_PAKET_WISATA'   => 'Booking'
+            //     ]);
 
             foreach ($request['id'] as $key) {
                 DB::table('sewa_paket_wisata')->insert([
-                    'ID_PAKET'      => $key,
-                    'QUANTITY'      => $request['qty'][$key],
-                    'DISCOUNT'      => $request['discount'][$key],
-                    'TOTAL'         => $request['subtotal'][$key]
+                    'TGL_SEWA_PAKET'        => $request->TGL_SEWA_PAKET,
+                    'TGL_AKHIR_SEWA_PAKET'  => $request->TGL_AKHIR_SEWA_PAKET,
+                    // 'ID_PAKET'              => $t,
+                    'ID_CUSTOMER'           => $idc1,
+                    'ID_PENGGUNA'           => 'USR001',
+                    'JAM_SEWA_PAKET'        => $request->JAM_SEWA_PAKET,
+                    'JAM_AKHIR_SEWA_PAKET'  => $request->JAM_AKHIR_SEWA_PAKET,
+                    'DP_PAKET'              => $request->dpbus,
+                    'SISA_SEWA_PAKET'       => $request->sisa,
+                    'STATUS_PAKET_WISATA'   => 'Booking',
+                    'ID_PAKET'              => $key,
+                    'QUANTITY'              => $request['qty'][$key],
+                    'DISCOUNT'              => $request['discount'][$key],
+                    'TOTAL'                 => $request['subtotal'][$key]
                 ]);
             }
 
