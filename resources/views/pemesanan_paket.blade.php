@@ -26,9 +26,9 @@
               <h1>Formulir Pemesanan Paket Wisata</h1>
               <hr>
             </div>
-            <div class="col-md-8 text-left">
+          <div class="col-md-8 text-left">
 
-            <form action="sewa_bus_category_store" method="post" accept-charset="utf-8">
+            <form action="pemesanan_paket_store" method="post" accept-charset="utf-8">
                {{ csrf_field() }}
                <!-- <input type="hidden" name="token_rahasia" value="72827582Uduagd86275gbdahgahgfa"> -->
                <input type="hidden" name="STATUS_SEWA" value="">
@@ -40,7 +40,7 @@
                 <div class="form-group row">
                   <label class="col-sm-4 control-label text-right">Tanggal Sewa<span class="text-danger">*</span></label>
                   <div class="col-sm-8">
-                    <input type="date" name="TANGGAL_SEWA_PAKET" class="form-control tanggal">
+                    <input type="date" name="TGL_SEWA_PAKET" class="form-control tanggal">
                   </div>
                 </div>
 
@@ -54,7 +54,7 @@
                 <div class="form-group row">
                   <label class="col-sm-4 control-label text-right">Tanggal Akhir Sewa<span class="text-danger">*</span></label>
                   <div class="col-sm-8">
-                    <input type="date" name="TANGGAL_AKHIR_SEWA_PAKET" class="form-control tanggal">
+                    <input type="date" name="TGL_AKHIR_SEWA_PAKET" class="form-control tanggal">
                   </div>
                 </div>
 
@@ -93,32 +93,31 @@
                     <textarea name="ALAMAT" class="form-control" placeholder="Alamat"></textarea>
                   </div>
                 </div>
-              
-                  <div class="form-group row">
+
+                <div class="form-group row">
                       <label class="col-sm-4 control-label"></label>
                       <div class="col-sm-8">
                         <div class="btn-group">
-                        
-                        <button type="submit" name="submit" class="btn btn-info btn-lg" value="submit">
-                          <i class="fa fa-times"></i>Submit
-                        </button>
-                    </div>
-                </div>
-              </div>
+                          <button type="submit" class="btn btn-info btn-lg" value="submit">
+                            <i class="fa fa-times"></i>Submit
+                          </button>
+                        </div>
+                      </div>
+                  </div>
              
-            </div>
-            <div class="col-md-4">
-                <img src="{{ url('asset/vegfoods/images/bismillah.jpg') }}" class="img img-thumbnail img-fluid" >  
-           
-               <hr>
-                <p>Anda sudah melakukan pembayaran? Silahkan lakukan <a href="{{ url('konfirmasi') }}">Konfirmasi Pembayaran</a>.</p>
-                <hr>
-             </div>
-             <div class="clearfix" align="left">
-                <button type="button" name="submit" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-                  <i class="fa fa-save"></i>Choose Packages
-                </button>
-            </div>
+          
+                    <div class="col-md-4">
+                      <img src="{{ url('asset/vegfoods/images/bismillah.jpg') }}" class="img img-thumbnail img-fluid" >  
+                      <hr>
+                        <p>Anda sudah melakukan pembayaran? Silahkan lakukan <a href="{{ url('konfirmasi') }}">Konfirmasi Pembayaran</a>.</p>
+                      <hr>
+                    </div>
+                  
+                      <div class="clearfix" align="left">
+                          <button type="button" name="submit" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                            <i class="fa fa-save"></i>Choose Packages
+                          </button>
+                      </div>
             </br>
             </br>
             <th>&nbsp;</th>
@@ -138,7 +137,7 @@
                 </thead>
 	          </table>
 
-            <br>
+        <br>
   
           <div class="col-xl-5">
 	          <div class="row mt-5 pt-3">
@@ -212,18 +211,19 @@
                                                       </tr>
                                                       @endforeach
                                                     </tbody>
-                                                  </table>
+                                                    </table>
                                                 </div>
                                               </div>
+                                            </div>
                                         </div>
                                       <div>
 
-                 
-            </form>
+                </form>
           </div>
         </div>
       </div>
     </div>
+  </div>
   </div>
   </br>
   </br>
@@ -275,31 +275,31 @@ var barang = <?php echo json_encode($paket_wisata); ?>;
 		cell2.innerHTML = '<input type="hidden" name="tj['+barang[index]["ID_PAKET"]+']" value="'+barang[index]["TEMPAT_KUNJUNG"]+'">'+barang[index]["TEMPAT_KUNJUNG"];	
 		cell3.innerHTML = '<input type="hidden" name="cat['+barang[index]["ID_PAKET"]+']" value="'+barang[index]["HARGA_PAKET"]+'">'+barang[index]["HARGA_PAKET"];
 		cell4.innerHTML = '<input type="hidden" id="harga'+barang[index]["ID_PAKET"]+'" name="harga['+barang[index]["ID_PAKET"]+']" value="'+barang[index]["HARGA_JUAL"]+'">'+barang[index]["HARGA_JUAL"];
-		cell5.innerHTML = '<input type="number" name="qty['+barang[index]["ID_PAKET"]+']" value="1" oninput="recount(\''+barang[index]["ID_PAKET"]+'\')" id="qty'+barang[index]["ID_PAKET"]+'" style="background:secondary; border:none; text-align:left; width=100%">';	
-        cell6.innerHTML = '<input class="discount" type="number" name="discount['+barang[index]["ID_PAKET"]+']" value="0" oninput="recount(\''+barang[index]["ID_PAKET"]+'\')" id="discount'+barang[index]["ID_PAKET"]+'" style="background:primary; border:none; text-align:left; width=100%">';	
+		cell5.innerHTML = '<input type="number" name="qty['+barang[index]["ID_PAKET"]+']" value="1" oninput="recount(\''+barang[index]["ID_PAKET"]+'\')" id="qty'+barang[index]["ID_PAKET"]+'" style="background:secondary; border:none; text-align:left; width=100%" readonly>';	
+    cell6.innerHTML = '<input class="discount" type="number" name="discount['+barang[index]["ID_PAKET"]+']" value="0" oninput="recount(\''+barang[index]["ID_PAKET"]+'\')" id="discount'+barang[index]["ID_PAKET"]+'" style="background:primary; border:none; text-align:left; width=100%">';	
 		cell7.innerHTML = '<input type="hidden" class="subtotal" name="subtotal['+barang[index]["ID_PAKET"]+']" value="'+barang[index]["HARGA_JUAL"]+'" id="subtotal'+barang[index]["ID_PAKET"]+'"><span id="subtotalval'+barang[index]["ID_PAKET"]+'">'+barang[index]["HARGA_JUAL"]+'</span>';
 		cell8.innerHTML = '<button onclick="hapusEl(\''+id+'\')" class="btn btn-danger btn-block text-uppercase">X</button>';
 		total();
 		
 	}
-	function lm(i){
-		var min =  document.getElementById("qty"+i).value;
-		if(min <= 1){
+	// function lm(i){
+	// 	var min =  document.getElementById("qty"+i).value;
+	// 	if(min <= 1){
 
-		}else{
-		min--;
-		document.getElementById("qty"+i).value = min;
-		recount(i);
-		}
-	}
-	function ln(i){
-		var plus =  document.getElementById("qty"+i).value;
-		console.log(plus);
-		plus++;
-		document.getElementById("qty"+i).value = plus;
-		console.log(plus);
-		recount(i);
-	}
+	// 	}else{
+	// 	min--;
+	// 	document.getElementById("qty"+i).value = min;
+	// 	recount(i);
+	// 	}
+	// }
+	// function ln(i){
+	// 	var plus =  document.getElementById("qty"+i).value;
+	// 	console.log(plus);
+	// 	plus++;
+	// 	document.getElementById("qty"+i).value = plus;
+	// 	console.log(plus);
+	// 	recount(i);
+	// }
 
 	function total(){
 		var subtotals = document.getElementsByClassName("subtotal");

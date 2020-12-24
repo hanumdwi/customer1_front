@@ -207,10 +207,24 @@ class PemesananController extends Controller
             'ALAMAT'          => $request->ALAMAT
         ]);
 
+        $cus = DB::table('customer')->get();
+        foreach($cus as $m){
+            $idc = $m->ID_CUSTOMER;
+        }
+//dd($idc);
+        // $peng = DB::table('pengguna')->get();
+        // $idp = Session::put($peng->JOB_STATUS);
+        // foreach($peng as $idp){
+        //     $h = $idp->ID_PENGGUNA;
+        // }
+        // // $idp = $peng->getId();
+        // dd($idp);
         DB::table('sewa_bus')->insert([
             'ID_SEWA_BUS'       => $request->ID_SEWA_BUS,
-            'TGL_SEWA_BUS'      => $request->TGL_SEWA,
+            'TGL_SEWA_BUS'      => $request->TGL_SEWA_BUS,
             'TGL_AKHIR_SEWA'    => $request->TGL_AKHIR_SEWA,
+            'ID_PENGGUNA'       => 'USR001',
+            'ID_CUSTOMER'       => $idc,
             'EMAIL_CUSTOMER'    => $request->EMAIL_CUSTOMER,
             'SISA_SEWA_BUS'     => $request->HARGA_SEWA_BUS,
             'JAM_SEWA'          => $request->JAM_SEWA,
@@ -218,7 +232,7 @@ class PemesananController extends Controller
             'DP_BUS'            =>  $request->DP_SEWA,
             'SISA_SEWA_BUS'     =>  $request->SISA_SEWA_BUS,
             'total_payment'     => $request->total_payment,
-            'STATUS_SEWA'       => $request->statussewa
+            'STATUS_SEWA'       => 'Booking'
             
         ]);
 
@@ -231,9 +245,9 @@ class PemesananController extends Controller
             DB::table('sewa_bus_category')->insert([
                 'ID_SEWA_BUS'   => $id,
                 'ID_PRICELIST'  => $key,
-                'QUANTITY' => $request['qty'][$key],
-                'DISCOUNT'=> $request['discount'][$key],
-                'TOTAL'=> $request['subtotal'][$key]
+                'QUANTITY'      => $request['qty'][$key],
+                'DISCOUNT'      => $request['discount'][$key],
+                'TOTAL'         => $request['subtotal'][$key]
             ]);
         }
 
@@ -255,30 +269,50 @@ class PemesananController extends Controller
 
 
      //return redirect('pemesanan', ['sewa_bus_category'=>$sewa_bus_category]);       
-    return redirect('pemesanan');       
+       return redirect('pemesanan');       
     }
 
     public function store_paket(Request $request)
     {
-            DB::table('customer')->insert([
-                'NAMA_CUSTOMER'   => $request->nama,
-                'EMAIL_CUSTOMER'  => $request->email,
-                'TELEPHONE'       => $request->telephone,
-                'ALAMAT'          => $request->alamat
-            ]);
+        DB::table('customer')->insert([
+            'NAMA_CUSTOMER'   => $request->NAMA_CUSTOMER,
+            'EMAIL_CUSTOMER'  => $request->EMAIL_CUSTOMER,
+            'TELEPHONE'       => $request->TELEPHONE,
+            'ALAMAT'          => $request->ALAMAT
+        ]);
+
+        $cus1 = DB::table('customer')->get();
+        foreach($cus1 as $m1){
+            $idc1 = $m1->ID_CUSTOMER;
+        }
+
+        // foreach ($request['id'] as $key) {
+        //     $t= DB::table('sewa_paket_wisata')->insert([
+        //         'ID_PAKET'      => $key
+        //         ]);
+        //     }
 
             DB::table('sewa_paket_wisata')->insert([
                 'TGL_SEWA_PAKET'        => $request->TGL_SEWA_PAKET,
                 'TGL_AKHIR_SEWA_PAKET'  => $request->TGL_AKHIR_SEWA_PAKET,
-                'ID_PAKET'              => $request->ID_PAKET,
-                'ID_CUSTOMER'           => $request->ID_CUSTOMER,
-                'ID_PENGGUNA'           => $request->ID_PENGGUNA,
+                // 'ID_PAKET'              => $t,
+                'ID_CUSTOMER'           => $idc1,
+                'ID_PENGGUNA'           => 'USR001',
                 'JAM_SEWA_PAKET'        => $request->JAM_SEWA_PAKET,
                 'JAM_AKHIR_SEWA_PAKET'  => $request->JAM_AKHIR_SEWA_PAKET,
                 'DP_PAKET'              => $request->DP_PAKET,
                 'SISA_SEWA_PAKET'       => $request->SISA_SEWA_PAKET,
-                'STATUS_PAKET_WISATA'   =>  $request->STATUS_PAKET_WISATA
+                'STATUS_PAKET_WISATA'   => 'Booking'
             ]);
+
+            foreach ($request['id'] as $key) {
+                DB::table('sewa_paket_wisata')->insert([
+                    'ID_PAKET'      => $key,
+                    'QUANTITY'      => $request['qty'][$key],
+                    'DISCOUNT'      => $request['discount'][$key],
+                    'TOTAL'         => $request['subtotal'][$key]
+                ]);
+            }
 
              return redirect('pemesanan_paket');
     }

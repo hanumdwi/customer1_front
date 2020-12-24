@@ -31,7 +31,8 @@
             <form action="pemesanan_store" method="post" accept-charset="utf-8">
                     {{ csrf_field() }}
                     <!-- <input type="hidden" name="token_rahasia" value="72827582Uduagd86275gbdahgahgfa"> -->
-                    <input type="hidden" name="STATUS_SEWA" value="">
+                    <input type="hidden" name="STATUS_SEWA" value="Booking">
+                    <!-- <input type="hidden" name="ID_PENGGUNA" value="{{Session::get('coba2')}}"> -->
 
                       <p class="alert alert-primary">
                         Isi data pemesanan Anda dengan lengkap dan benar.
@@ -40,7 +41,7 @@
                       <div class="form-group row">
                         <label class="col-sm-4 control-label text-right">Tanggal Sewa<span class="text-danger">*</span></label>
                         <div class="col-sm-8">
-                          <input type="date" name="TANGGAL_SEWA_BUS" class="form-control tanggal">
+                          <input type="date" name="TGL_SEWA_BUS" class="form-control tanggal">
                         </div>
                       </div>
 
@@ -54,7 +55,7 @@
                       <div class="form-group row">
                         <label class="col-sm-4 control-label text-right">Tanggal Akhir Sewa<span class="text-danger">*</span></label>
                         <div class="col-sm-8">
-                          <input type="date" name="TANGGAL_AKHIR_SEWA" class="form-control tanggal">
+                          <input type="date" name="TGL_AKHIR_SEWA" class="form-control tanggal">
                         </div>
                       </div>
 
