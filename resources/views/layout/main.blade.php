@@ -92,7 +92,7 @@
 
 
 @yield('container')
-
+@yield('script')
 
 	<section class="ftco-section ftco-no-pt ftco-no-pb py-5 bg-light"></section>
 

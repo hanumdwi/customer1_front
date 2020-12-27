@@ -39,6 +39,9 @@ Route::get('cart', 'CartController@indexcart');
 Route::get('cart/{id}', 'CartController@index')->name('cart_index');
 
 Route::get('pemesanan', 'PemesananController@indexawal');
+Route::get('invoice/{id}', 'PemesananController@pdf');
+Route::get('cetak_bus', 'PemesananController@cetak_bus');
+
 Route::get('pemesanan_paket', 'PemesananController@indexawal_paket');
 Route::post('pemesanan_store', 'PemesananController@store');
 Route::post('pemesanan_paket_store', 'PemesananController@store_paket');

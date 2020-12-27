@@ -99,16 +99,18 @@
                       <label class="col-sm-4 control-label"></label>
                       <div class="col-sm-8">
                         <div class="btn-group">
+                        <a href="invoice/{{$id -> ID_SEWA_BUS}}">
                           <button type="submit" class="btn btn-info btn-lg" value="submit">
                             <i class="fa fa-times"></i>Submit
                           </button>
+                          </a>
                         </div>
                       </div>
                   </div>
              
           
-                    <div class="col-md-4">
-                      <img src="{{ url('asset/vegfoods/images/bismillah.jpg') }}" class="img img-thumbnail img-fluid" >  
+                    <div class="col-md-12">
+                      <!-- <img src="{{ url('asset/vegfoods/images/bismillah.jpg') }}" class="img img-thumbnail img-fluid" >   -->
                       <hr>
                         <p>Anda sudah melakukan pembayaran? Silahkan lakukan <a href="{{ url('konfirmasi') }}">Konfirmasi Pembayaran</a>.</p>
                       <hr>

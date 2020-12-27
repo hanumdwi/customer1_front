@@ -72,7 +72,7 @@
               <hr>
               <table id="example1" class="display table table-bordered" cellspacing="0" width="100%">
                 <thead>
-                  <tr class="bg-info">
+                  <tr class="bg-light">
                     <th width="5%">No.</th>
                     <!-- <th>GAMBAR</th> -->
                     <th>Nama Bank</th>
@@ -98,7 +98,8 @@
   </div>
 </section>
 </br>
-</br>
-</br>
+<section class="ftco-section bg-light">
+
+</section>
 
 @endsection

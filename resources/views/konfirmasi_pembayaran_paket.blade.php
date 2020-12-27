@@ -28,7 +28,7 @@
             </div>
             <div class="col-md-12 text-left">
               
-              <p class="text-center">Baca informasi Panduan pembayaran sebelum melakukaan konfirmasi. <a href="">Panduan Pembayaran</a>.</p>
+              <p class="text-center">Baca informasi Panduan pembayaran sebelum melakukaan konfirmasi. <a href="panduan_pembayaran">Panduan Pembayaran</a>.</p>
               <hr>
                 <!-- <div class="alert alert-danger"></div> -->
 
@@ -39,6 +39,12 @@
 
                         <form action="" method="POST" enctype="multipart/form-data">
                             {{ csrf_field() }}
+                            <div class="form-row">
+                                    <div class="col-md-4 mb-3">
+                                        <label for="nama" class="col-form-label">Nomor Transaksi :</label>
+                                            <input type="text" class="form-control" id="ID_SEWA_PAKET" name="ID_SEWA_PAKET" placeholder="for example : 201226001">
+                                    </div>
+                                </div>
                                 <div class="form-row">
                                     <div class="col-md-4 mb-3">
                                         <label for="nama" class="col-form-label">Rekening Pembayaran :</label>
@@ -52,11 +58,7 @@
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="nama" class="col-form-label">Cara Bayar :</label>
-                                            <select name="carabayar" class="form-control" id="carabayar">
-                                                <option selected="selected">-- Pilih --</option>
-                                                    <option>Transfer</option>
-                                                    <option>Tunai</option>
-                                            </select>
+                                            <input type="text" class="form-control" id="carabayar" name="carabayar" value="Transfer">   
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="date" class="col-form-label">Tanggal Bayar :</label>
@@ -110,13 +112,8 @@
 
                             </form>
 </section>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
+<section class="ftco-section bg-light">
+
+</section>
 
 @endsection

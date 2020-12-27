@@ -148,12 +148,14 @@ class PemesananController extends Controller
        
 }
  
-    public function pdf(Request $request, $ids)
+    public function pdf($id)
     {
-        $sewa_bus= Sewa_Bus::find($ids);
-        $pengguna= Pengguna::find($sewa_bus->ID_PENGGUNA);
-        $customer= customer::find($sewa_bus->ID_CUSTOMER);
-        
+        $sewa_bus=DB::table('sewa_bus')
+        ->join('customer', 'sewa_bus.ID_CUSTOMER', '=', 'customer.ID_CUSTOMER')
+        ->join('pengguna', 'sewa_bus.ID_PENGGUNA', '=', 'pengguna.ID_PENGGUNA')
+        ->select('sewa_bus.*', 'customer.*', 'pengguna.*')
+        ->get();
+
         $category_armada=DB::table('category_armada')->get();
         $pricelist_sewa_armada=DB::table('pricelist_sewa_armada')->get();
         $sewa_bus_category=DB::table('sewa_bus_category')
@@ -166,8 +168,38 @@ class PemesananController extends Controller
         ->get();
 
 
-        return view('invoice',['sewa_bus'=>$sewa_bus, 'pengguna'=>$pengguna,'customer'=>$customer],
+        return view('invoice',['sewa_bus'=>$sewa_bus],
         ['sewa_bus_category'=>$sewa_bus_category, 'pricelist_sewa_armada'=>$pricelist_sewa_armada, 'category_armada'=>$category_armada]);
+    }
+
+    public function cetak_bus(Request $request)
+    {
+        $sewa_bus=DB::table('sewa_bus')
+        ->join('customer', 'sewa_bus.ID_CUSTOMER', '=', 'customer.ID_CUSTOMER')
+        ->join('pengguna', 'sewa_bus.ID_PENGGUNA', '=', 'pengguna.ID_PENGGUNA')
+        ->select('sewa_bus.*', 'customer.*', 'pengguna.*')
+        ->get();
+
+        $category_armada=DB::table('category_armada')->get();
+        $pricelist_sewa_armada=DB::table('pricelist_sewa_armada')->get();
+        $sewa_bus_category=DB::table('sewa_bus_category')
+        ->join('sewa_bus','sewa_bus_category.ID_SEWA_BUS', '=', 'sewa_bus.ID_SEWA_BUS')
+        ->join('pricelist_sewa_armada','sewa_bus_category.ID_PRICELIST', '=', 'pricelist_sewa_armada.ID_PRICELIST')
+        ->join('category_armada', 'pricelist_sewa_armada.ID_CATEGORY', '=', 'category_armada.ID_CATEGORY')
+        ->select('sewa_bus_category.ID_SEWA_BUS', 'sewa_bus_category.ID_PRICELIST',
+        'sewa_bus_category.QUANTITY', 'sewa_bus_category.TOTAL',
+        'category_armada.NAMA_CATEGORY', 'pricelist_sewa_armada.TUJUAN_SEWA', 'pricelist_sewa_armada.PRICELIST_SEWA')
+        ->get();
+
+        $pdf = PDF::loadview('/cetak_bus',['sewa_bus'=>$sewa_bus],
+        ['sewa_bus_category'=>$sewa_bus_category, 'pricelist_sewa_armada'=>$pricelist_sewa_armada, 
+        'category_armada'=>$category_armada])->setPaper('A4');
+        
+        // $paper = array(0, 0, 51,0236, 107,717);
+        //  $pdf->setPaper($paper);
+        // $pdf->setPaper($paper,'landscape');
+        return $pdf->stream();
+
     }
 
     public function pdf_paket(Request $request, $id)
@@ -268,8 +300,9 @@ class PemesananController extends Controller
 
 
 
-     //return redirect('pemesanan', ['sewa_bus_category'=>$sewa_bus_category]);       
-       return redirect('pemesanan');       
+     //return redirect('pemesanan', ['sewa_bus_category'=>$sewa_bus_category]);     
+     return Redirect::to('invoice')->with(['id'=>$id,'succes' => 'Alread Apply for this post']);  
+       //return redirect('invoice');       
     }
 
     public function store_paket(Request $request)
