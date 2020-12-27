@@ -95,18 +95,7 @@
                         </div>
                       </div>
               
-                  <div class="form-group row">
-                      <label class="col-sm-4 control-label"></label>
-                      <div class="col-sm-8">
-                        <div class="btn-group">
-                        <a href="invoice/{{$id -> ID_SEWA_BUS}}">
-                          <button type="submit" class="btn btn-info btn-lg" value="submit">
-                            <i class="fa fa-times"></i>Submit
-                          </button>
-                          </a>
-                        </div>
-                      </div>
-                  </div>
+                 
              
           
                     <div class="col-md-12">
@@ -117,12 +106,11 @@
                     </div>
 
                     <div class="clearfix" align="left">
-                        <button type="button" name="submit" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                        <button type="button" name="submit" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">
                           <i class="fa fa-save"></i>Choose Armada
                         </button>
                     </div>
-            </br>
-            </br>
+            
             <th>&nbsp;</th>
                     <table class="table table-bordered" id="keranjang">
                       <thead class="thead-light">
@@ -142,9 +130,9 @@
 
             <br>
   
-                      <div class="col-xl-5">
-                        <div class="row mt-5 pt-3">
-                          <div class="col-md-12 d-flex mb-5">
+                      <div class="col-xl-12">
+                        <div class="row mt-12 pt-3">
+                          <div class="col-md-12 d-flex mb-12">
                             <div class="cart-detail cart-total p-3 p-md-4">
                               <h3 class="billing-heading mb-4">Cart Total</h3>
                               <p class="d-flex">
@@ -184,8 +172,19 @@
                               <input type="hidden" name="sub" id="tot">
                               <input type="hidden" name="dpbus" id="depe">
                               <input type="hidden" name="sisa" id="sb">
-
-            
+                              <th>&nbsp;</th>
+                              <th>&nbsp;</th>
+                              
+                    <div class="form-group row" align="right">
+                      <label class="col-sm-4 control-label"></label>
+                      <div class="col-sm-8">
+                        <div class="btn-group">
+                          <button type="submit" class="btn btn-info btn-lg" value="submit">
+                            <i class="fa fa-times"></i>Submit
+                          </button>
+                        </div>
+                      </div>
+                    </div>
             
                                       <!-- Modal -->
                                       <div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" id="myModal">

@@ -148,7 +148,7 @@ class PemesananController extends Controller
        
 }
  
-    public function pdf($id)
+    public function pdf(Request $request)
     {
         $sewa_bus=DB::table('sewa_bus')
         ->join('customer', 'sewa_bus.ID_CUSTOMER', '=', 'customer.ID_CUSTOMER')
@@ -202,24 +202,45 @@ class PemesananController extends Controller
 
     }
 
-    public function pdf_paket(Request $request, $id)
+    public function pdf_paket(Request $request)
     {
-        $sewa_paket_wisata= Sewa_Paket_Wisata::find($id);
-        $pengguna= Pengguna::find($sewa_paket_wisata->ID_PENGGUNA);
-        $customer= customer::find($sewa_paket_wisata->ID_CUSTOMER);
-
-        $paket_wisata=DB::table('paket_wisata')->get();
         $sewa_paket_wisata=DB::table('sewa_paket_wisata')
-        ->join('paket_wisata','sewa_paket_wisata.ID_PAKET', '=', 'paket_wisata.ID_PAKET')
-        ->where('ID_SEWA_PAKET', '=', $id)
-        ->select('sewa_paket_wisata.ID_SEWA_PAKET','sewa_paket_wisata.TGL_SEWA_PAKET',
-        'sewa_paket_wisata.TGL_AKHIR_SEWA_PAKET', 'sewa_paket_wisata.DP_PAKET',
-        'sewa_paket_wisata.HARGA_SEWA_PAKET','sewa_paket_wisata.JAM_SEWA_PAKET',
-        'sewa_paket_wisata.JAM_AKHIR_SEWA_PAKET','paket_wisata.NAMA_PAKET')
+        ->join('customer', 'sewa_paket_wisata.ID_CUSTOMER', '=', 'customer.ID_CUSTOMER')
+        ->join('pengguna', 'sewa_paket_wisata.ID_PENGGUNA', '=', 'pengguna.ID_PENGGUNA')
+        ->join('paket_wisata', 'sewa_paket_wisata.ID_PAKET', '=', 'sewa_paket_wisata.ID_PAKET' )
+        ->select('sewa_paket_wisata.*', 'customer.*', 'pengguna.*', 'paket_wisata.*','sewa_paket_wisata.ID_PAKET')
         ->get();
 
-        return view('invoicepaket',['sewa_paket_wisata'=>$sewa_paket_wisata, 'pengguna'=>$pengguna,
-        'customer'=>$customer, 'paket_wisata'=>$paket_wisata]);
+
+        // $paket_wisata=DB::table('paket_wisata')->get();
+        // $sewa_paket_wisata=DB::table('sewa_paket_wisata')
+        // ->join('paket_wisata','sewa_paket_wisata.ID_PAKET', '=', 'paket_wisata.ID_PAKET')
+        // ->where('ID_SEWA_PAKET', '=', $id)
+        // ->select('sewa_paket_wisata.ID_SEWA_PAKET','sewa_paket_wisata.TGL_SEWA_PAKET',
+        // 'sewa_paket_wisata.TGL_AKHIR_SEWA_PAKET', 'sewa_paket_wisata.DP_PAKET',
+        // 'sewa_paket_wisata.HARGA_SEWA_PAKET','sewa_paket_wisata.JAM_SEWA_PAKET',
+        // 'sewa_paket_wisata.JAM_AKHIR_SEWA_PAKET','paket_wisata.NAMA_PAKET')
+        // ->get();
+
+        return view('invoice_paket',['sewa_paket_wisata'=>$sewa_paket_wisata]);
+    }
+
+    public function cetak_paket(Request $request)
+    {
+        $sewa_paket_wisata=DB::table('sewa_paket_wisata')
+        ->join('customer', 'sewa_paket_wisata.ID_CUSTOMER', '=', 'customer.ID_CUSTOMER')
+        ->join('pengguna', 'sewa_paket_wisata.ID_PENGGUNA', '=', 'pengguna.ID_PENGGUNA')
+        ->join('paket_wisata', 'sewa_paket_wisata.ID_PAKET', '=', 'sewa_paket_wisata.ID_PAKET' )
+        ->select('sewa_paket_wisata.*', 'customer.*', 'pengguna.*', 'paket_wisata.*','sewa_paket_wisata.ID_PAKET')
+        ->get();
+
+        $pdf = PDF::loadview('/cetak_paket',['sewa_paket_wisata'=>$sewa_paket_wisata])->setPaper('A4');
+        
+        // $paper = array(0, 0, 51,0236, 107,717);
+        //  $pdf->setPaper($paper);
+        // $pdf->setPaper($paper,'landscape');
+        return $pdf->stream();
+
     }
 
     /**
@@ -357,7 +378,8 @@ class PemesananController extends Controller
                 ]);
             }
 
-             return redirect('pemesanan_paket');
+            //return Redirect::to('invoice_paket')->with(['id'=>$id,'succes' => 'Alread Apply for this post']);  
+             return redirect('invoice_paket');
     }
 
     public function cetak_pdf($id)
