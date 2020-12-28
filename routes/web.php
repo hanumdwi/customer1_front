@@ -38,10 +38,14 @@ Route::post('sewa_busstore', 'CartController@store');
 Route::get('cart', 'CartController@indexcart');
 Route::get('cart/{id}', 'CartController@index')->name('cart_index');
 
+//===============================================================================
+
 Route::get('pemesanan', 'PemesananController@indexawal');
 Route::post('pemesanan_store', 'PemesananController@store');
 Route::get('invoice', 'PemesananController@pdf');
 Route::get('cetak_bus', 'PemesananController@cetak_bus');
+Route::get('tujuan','PemesananController@getTujuan');
+Route::get('tujuanbyfilter','PemesananController@getTujuanByFilter');
 
 Route::get('pemesanan_paket', 'PemesananController@indexawal_paket');
 Route::post('pemesanan_paket_store', 'PemesananController@store_paket');

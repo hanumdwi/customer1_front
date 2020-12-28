@@ -44,7 +44,7 @@
                   </div>
                 </div>
 
-                <div class="form-group row">
+                <!-- <div class="form-group row">
                   <label class="col-sm-4 control-label text-right">Jam Sewa<span class="text-danger">*</span></label>
                   <div class="col-sm-8">
                     <input type="time" name="JAM_SEWA_PAKET" class="form-control tanggal">
@@ -63,7 +63,7 @@
                   <div class="col-sm-8">
                     <input type="time" name="JAM_AKHIR_SEWA_PAKET" class="form-control tanggal">
                   </div>
-                </div>
+                </div> -->
 
                 <div class="form-group row">
                   <label class="col-sm-4 control-label text-right">Nama Anda<span class="text-danger">*</span></label>

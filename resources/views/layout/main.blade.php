@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  <head>
     <title>PT. MDC Trans Lamongan</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ asset('asset/vegfoods/css/open-iconic-bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/vegfoods/css/animate.css') }}">
-    
+
     <link rel="stylesheet" href="{{ asset('asset/vegfoods/css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/vegfoods/css/owl.theme.default.min.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/vegfoods/css/magnific-popup.css') }}">
@@ -24,12 +23,12 @@
     <link rel="stylesheet" href="{{ asset('asset/vegfoods/css/bootstrap-datepicker.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/vegfoods/css/jquery.timepicker.css') }}">
 
-    
+
     <link rel="stylesheet" href="{{ asset('asset/vegfoods/css/flaticon.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/vegfoods/css/icomoon.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/vegfoods/css/style.css') }}">
 
-    
+
 <!-- DataTable -->
 <link rel="stylesheet" href="{{ asset('dataTable/datatables.min.css') }}" type="text/css">
   </head>
@@ -92,11 +91,12 @@
 
 
 @yield('container')
-@yield('script')
+
 
 	<section class="ftco-section ftco-no-pt ftco-no-pb py-5 bg-light"></section>
 
-
+    <div id="WAButton"></div>
+</body>
     <footer class="ftco-footer ftco-section">
       <div class="container">
       	<div class="row">
@@ -111,9 +111,9 @@
             <div class="ftco-footer-widget mb-4">
 			<h2 class="ftco-heading-2">PT. MDC Trans</h2>
               <p> Merupakan PO bus pariwisata yang berasal dari Lamongan, Jawa Timur.
-                  Bus pariwisata ini melayani transportasi wisata di Indonesia, khususnya di Pulau Jawa, Bali, Lombok, 
+                  Bus pariwisata ini melayani transportasi wisata di Indonesia, khususnya di Pulau Jawa, Bali, Lombok,
                   dan sebagian Sumatera.
-                  Bus pariwisata MDC Trans Trans melayani antar jemput, drop bandara, trip wisata, wisata ziarah, 
+                  Bus pariwisata MDC Trans Trans melayani antar jemput, drop bandara, trip wisata, wisata ziarah,
                   kunjungan industri dan atau menyesuaikan kebutuhan pelanggan.</p>
               <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
                 <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
@@ -188,11 +188,31 @@
   <script src="{{ asset('asset/vegfoods/js/jquery.animateNumber.min.js') }}"></script>
   <script src="{{ asset('asset/vegfoods/js/bootstrap-datepicker.js') }}"></script>
   <script src="{{ asset('asset/vegfoods/js/scrollax.min.js') }}"></script>
-  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAznbmf9fxvDrf8Fnv8MPq09mQN5NVXtZk&callback=initMap&libraries=&v=weekly" defer></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAznbmf9fxvDrf8Fnv8MPq09mQN5NVXtZk&callback=initMap&libraries=&v=weekly" defer></script>
   <script src="{{ asset('asset/vegfoods/google-map1.js') }}"></script>
-  <script src="{{ asset('asset/vegfoods/js/google-map.js') }}"></script> -->
+  <script src="{{ asset('asset/vegfoods/js/google-map.js') }}"></script>
   <script src="{{ asset('asset/vegfoods/js/main.js') }}"></script>
-  <!-- DataTable -->
+<!--Floating WhatsApp css-->
+<link rel="stylesheet" href="https://rawcdn.githack.com/rafaelbotazini/floating-whatsapp/3d18b26d5c7d430a1ab0b664f8ca6b69014aed68/floating-wpp.min.css">
+<!--Floating WhatsApp javascript-->
+<script type="text/javascript" src="https://rawcdn.githack.com/rafaelbotazini/floating-whatsapp/3d18b26d5c7d430a1ab0b664f8ca6b69014aed68/floating-wpp.min.js"></script>
+<script>
+ $(function() {
+  $('#WAButton').floatingWhatsApp({
+    phone: '085607875343', //WhatsApp Business phone number International format-
+    //Get it with Toky at https://toky.co/en/features/whatsapp.
+    headerTitle: 'Chat with us on WhatsApp!', //Popup Title
+    popupMessage: 'Hello, how can we help you?', //Popup Message
+    showPopup: true, //Enables popup display
+    buttonImage: '<img src="https://rawcdn.githack.com/rafaelbotazini/floating-whatsapp/3d18b26d5c7d430a1ab0b664f8ca6b69014aed68/whatsapp.svg" />', //Button Image
+    //headerColor: 'crimson', //Custom header color
+    //backgroundColor: 'crimson', //Custom background button color
+    position: "right"
+  });
+});
+</script>
+
+<!-- DataTable -->
 <script src="{{ asset('dataTable/datatables.min.js') }}"></script>
 <script src="{{ asset('asset/vegfoods/js/datatable.js') }}"></script>
   <!-- <script>
@@ -219,5 +239,5 @@ $('#example').DataTable({
         ]
 });
 </script> -->
-  </body>
+@yield('script');
 </html>

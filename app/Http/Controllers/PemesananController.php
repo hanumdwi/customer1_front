@@ -275,13 +275,13 @@ class PemesananController extends Controller
         DB::table('sewa_bus')->insert([
             'ID_SEWA_BUS'       => $request->ID_SEWA_BUS,
             'TGL_SEWA_BUS'      => $request->TGL_SEWA_BUS,
-            'TGL_AKHIR_SEWA'    => $request->TGL_AKHIR_SEWA,
+            // 'TGL_AKHIR_SEWA'    => $request->TGL_AKHIR_SEWA,
             'ID_PENGGUNA'       => 'USR001',
             'ID_CUSTOMER'       => $idc,
             'EMAIL_CUSTOMER'    => $request->EMAIL_CUSTOMER,
             'SISA_SEWA_BUS'     => $request->HARGA_SEWA_BUS,
-            'JAM_SEWA'          => $request->JAM_SEWA,
-            'JAM_AKHIR_SEWA'    => $request->JAM_AKHIR_SEWA,
+            // 'JAM_SEWA'          => $request->JAM_SEWA,
+            // 'JAM_AKHIR_SEWA'    => $request->JAM_AKHIR_SEWA,
             'DP_BUS'            =>  $request->DP_SEWA,
             'SISA_SEWA_BUS'     =>  $request->SISA_SEWA_BUS,
             'total_payment'     => $request->total_payment,
@@ -362,12 +362,12 @@ class PemesananController extends Controller
             foreach ($request['id'] as $key) {
                 DB::table('sewa_paket_wisata')->insert([
                     'TGL_SEWA_PAKET'        => $request->TGL_SEWA_PAKET,
-                    'TGL_AKHIR_SEWA_PAKET'  => $request->TGL_AKHIR_SEWA_PAKET,
+                    // 'TGL_AKHIR_SEWA_PAKET'  => $request->TGL_AKHIR_SEWA_PAKET,
                     // 'ID_PAKET'              => $t,
                     'ID_CUSTOMER'           => $idc1,
                     'ID_PENGGUNA'           => 'USR001',
-                    'JAM_SEWA_PAKET'        => $request->JAM_SEWA_PAKET,
-                    'JAM_AKHIR_SEWA_PAKET'  => $request->JAM_AKHIR_SEWA_PAKET,
+                    // 'JAM_SEWA_PAKET'        => $request->JAM_SEWA_PAKET,
+                    // 'JAM_AKHIR_SEWA_PAKET'  => $request->JAM_AKHIR_SEWA_PAKET,
                     'DP_PAKET'              => $request->dpbus,
                     'SISA_SEWA_PAKET'       => $request->sisa,
                     'STATUS_PAKET_WISATA'   => 'Booking',
@@ -403,10 +403,37 @@ class PemesananController extends Controller
     }
 
 
+    // public function getTujuan(){
+    //     $tmp = DB::table('pricelist_sewa_armada')
+    //     ->get();
+
+    //     return response()->json(['status'=>'success','data'=>$tmp]);
+    // }
+
     public function getTujuan(){
-        $tmp = DB::table('pricelist_sewa_armada')
+        $tmp = DB::table('pricelist_sewa_armada')->where('ID_CATEGORY', request()->category)
         ->get();
 
         return response()->json(['status'=>'success','data'=>$tmp]);
+    }
+
+    public function getTujuanByFilter(){
+        $x = DB::table('vw_listallschedule')
+        ->where('TGL_SEWA', '>=', request()->tgl)
+        ->where('TGL_AKHIR_SEWA', '<=', request()->tgl)
+        ->where('ID_CATEGORY', '=', request()->cat1)
+        ->select('vw_listallschedule.ID_PRICELIST')
+        ->get();
+        $array = json_decode(json_encode($x),true);
+
+        $y = DB::table('pricelist_sewa_armada')
+        ->join('vw_bus_ready', 'vw_bus_ready.ID_CATEGORY', '=', 'pricelist_sewa_armada.ID_CATEGORY')
+        ->whereNotIn('ID_PRICELIST', $array)
+        ->Where('TUJUAN_SEWA',  '=', request()->tuj)
+        ->Where('pricelist_sewa_armada.ID_CATEGORY',  '=', request()->cat1)
+       
+        ->get();
+
+        return response()->json(['status'=>'success','data'=>$y]);
     }
 }

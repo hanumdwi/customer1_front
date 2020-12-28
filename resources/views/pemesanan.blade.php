@@ -37,34 +37,64 @@
                       <p class="alert alert-primary">
                         Isi data pemesanan Anda dengan lengkap dan benar.
                       </p>
-
+                      <div class="form-group row">
+                        <label class="col-sm-4 control-label text-right">Category Armada :</label>
+                        <div class="col-sm-8">
+                        <select name="ID_CATEGORY" class="form-control" id="ID_CATEGORY1" onchange="getTujuan()">
+                                        @foreach($category_armada as $c)
+                                       
+                                        <option id="ID_CATEGORY1{{$c->ID_CATEGORY}}" value="{{$c->ID_CATEGORY}}" 
+                                        data-tujuan="{{$c->ID_CATEGORY}}">{{$c->NAMA_CATEGORY}}</option>
+                                       
+                                        @endforeach                 
+                                        </select>
+                      </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-sm-4 control-label text-right">Tujuan Armada :</label>
+                        <div class="col-sm-8">
+                        <select name="TUJUAN_SEWA" class="form-control" id="TUJUAN_SEWA1" onchange="getHarga()">
+                                            @foreach($pricelist_sewa_armada as $pr)
+                                        
+                                            <option id="TUJUAN_SEWA1{{$pr->ID_PRICELIST}}" value="{{$pr->ID_PRICELIST}}" 
+                                            data-pricelist="{{$pr->PRICELIST_SEWA}}">{{$pr->TUJUAN_SEWA}}</option>
+                                        
+                                            @endforeach                 
+                                            </select>
+                      </div>
+                      </div>
                       <div class="form-group row">
                         <label class="col-sm-4 control-label text-right">Tanggal Sewa<span class="text-danger">*</span></label>
-                        <div class="col-sm-8">
-                          <input type="date" name="TGL_SEWA_BUS" class="form-control tanggal">
+                        <div class="col-sm-4">
+                          <input id="tglsewa" type="date" name="TGL_SEWA_BUS" class="form-control tanggal">
+                        </div>
+                        <div class="col-sm-4">
+                          <button id="btntujuan" type="button" name="submit" class="btn btn-primary btn-xs" onclick="getTujuanByDate()">
+                            <i class="fa fa-save"></i>Choose Armada
+                          </button>
                         </div>
                       </div>
 
-                      <div class="form-group row">
+                      <!-- <div class="form-group row">
                         <label class="col-sm-4 control-label text-right">Jam Sewa<span class="text-danger">*</span></label>
                         <div class="col-sm-8">
                           <input type="time" name="JAM_SEWA" class="form-control tanggal">
                         </div>
-                      </div>
+                      </div> -->
 
-                      <div class="form-group row">
+                      <!-- <div class="form-group row">
                         <label class="col-sm-4 control-label text-right">Tanggal Akhir Sewa<span class="text-danger">*</span></label>
                         <div class="col-sm-8">
                           <input type="date" name="TGL_AKHIR_SEWA" class="form-control tanggal">
                         </div>
-                      </div>
+                      </div> -->
 
-                      <div class="form-group row">
+                      <!-- <div class="form-group row">
                         <label class="col-sm-4 control-label text-right">Tanggal Akhir Sewa<span class="text-danger">*</span></label>
                         <div class="col-sm-8">
                           <input type="time" name="JAM_AKHIR_SEWA" class="form-control tanggal">
                         </div>
-                      </div>
+                      </div> -->
 
                       <div class="form-group row">
                         <label class="col-sm-4 control-label text-right">Nama Anda<span class="text-danger">*</span></label>
@@ -195,26 +225,21 @@
                                               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                             </div>
                                               <div class="modal-body">
-                                                <div class="table-responsive">
-                                                    <table id="example1" class="table table-striped">
+                                                <!-- <div class="table-responsive"> -->
+                                                    <table class="table table-striped">
                                                     <thead>
                                                       <tr role="row">
                                                         <th class="datatable-nosort sorting_disabled" rowspan="1" colspan="1">Armada</th>
                                                         <th class="datatable-nosort sorting_disabled" rowspan="1" colspan="1">Tujuan Sewa</th>
                                                         <th class="datatable-nosort sorting_disabled" rowspan="1" colspan="1">Price</th>
+                                                        <th class="datatable-nosort sorting_disabled" rowspan="1" colspan="1">Jumlah Armada</th>
                                                       </tr>
                                                     </thead>
-                                                    <tbody>
-                                                      @foreach( $pricelist_sewa_armada as $p )
-                                                      <tr role="row" class="odd" onclick="pilihBarang('{{ $p -> ID_PRICELIST }}')" style="cursor:pointer">
-                                                        <td value="{{$p->ID_CATEGORY}}">{{ $p->NAMA_CATEGORY }}</td>
-                                                        <td>{{ $p->TUJUAN_SEWA }}</td>
-                                                        <td>Rp <?php echo number_format($p->PRICELIST_SEWA,'0',',','.'); ?></td>
-                                                      </tr>
-                                                      @endforeach
+                                                    <tbody id="bodyprice">
+                                                      
                                                     </tbody>
                                                   </table>
-                                                </div>
+                                                <!-- </div> -->
                                               </div>
                                             </div>
                                         </div>
@@ -237,6 +262,44 @@
 </section>
 
 <script>
+
+   
+   function getTujuan(){
+    var cat = document.getElementById('ID_CATEGORY1').value;
+       $.ajax({
+           url:"{{url('tujuan')}}",
+            data:"category="+cat,
+           dataType: "json",
+           type: "GET",
+           success:function(response){
+            // alert("Percoban");
+                $('#TUJUAN_SEWA1').empty();
+                 $.each(response.data,function(key,item){
+                     $('#TUJUAN_SEWA1').append('<option id="TUJUAN_SEWA1'+item.ID_PRICELIST+'"  value"'+item.ID_CATEGORY+'" data-pricelist="'+item.PRICELIST_SEWA+'">'+item.TUJUAN_SEWA+'</option>');
+                 });
+           }
+       });
+  }
+
+  function getTujuanByDate(){
+    var tgl = document.getElementById('tglsewa').value;
+    var tuj = document.getElementById('TUJUAN_SEWA1').value;
+    var cat1 = document.getElementById('ID_CATEGORY1').value;
+    $.ajax({
+      url:"{{url('tujuanbyfilter')}}",
+      data: "tgl="+tgl+"&tuj="+tuj+"&cat1="+cat1,
+      dataType: "json",
+          type: "GET",
+      success:function(response){
+        $('#bodyprice').empty();
+        $.each(response.data,function(key,item){
+          $('#bodyprice').append('<tr role="row" class="odd" onclick="pilihBarang(\''+item.ID_PRICELIST+'\')" style="cursor:pointer"><td value="'+item.ID_CATEGORY+'">'+item.NAMA_CATEGORY+'</td><td>'+ item.TUJUAN_SEWA +'</td><td>'+item.PRICELIST_SEWA+'</td><td>'+item.jmlbis+'</td></tr>');
+       
+    });
+    $('#myModal').modal('show');
+  }
+    });
+  }
 
 var barang = <?php echo json_encode($pricelist_sewa_armada); ?>;
 	console.log(barang[0]["NAMA_CATEGORY"]);
