@@ -105,7 +105,7 @@
                     </div>
                   
                       <div class="clearfix" align="left">
-                          <button type="button" name="submit" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">
+                          <button id="btnchoose" type="button" name="submit" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">
                             <i class="fa fa-save"></i>Choose Packages
                           </button>
                       </div>
@@ -254,6 +254,7 @@ var barang = <?php echo json_encode($paket_wisata); ?>;
 			}
 		}
 		$("#myModal").modal("hide");
+    $("#btnchoose").hide();
 
 		var table = document.getElementById("keranjang");
 		var row = table.insertRow(table.rows.length);
@@ -276,7 +277,7 @@ var barang = <?php echo json_encode($paket_wisata); ?>;
 		cell3.innerHTML = '<input type="hidden" name="cat['+barang[index]["ID_PAKET"]+']" value="'+barang[index]["HARGA_PAKET"]+'">'+barang[index]["HARGA_PAKET"];
 		cell4.innerHTML = '<input type="hidden" id="harga'+barang[index]["ID_PAKET"]+'" name="harga['+barang[index]["ID_PAKET"]+']" value="'+barang[index]["HARGA_JUAL"]+'">'+barang[index]["HARGA_JUAL"];
 		cell5.innerHTML = '<input type="number" name="qty['+barang[index]["ID_PAKET"]+']" value="1" oninput="recount(\''+barang[index]["ID_PAKET"]+'\')" id="qty'+barang[index]["ID_PAKET"]+'" style="background:secondary; border:none; text-align:left; width=100%" readonly>';	
-    cell6.innerHTML = '<input class="discount" type="number" name="discount['+barang[index]["ID_PAKET"]+']" value="0" oninput="recount(\''+barang[index]["ID_PAKET"]+'\')" id="discount'+barang[index]["ID_PAKET"]+'" style="background:primary; border:none; text-align:left; width=100%">';	
+    cell6.innerHTML = '<input class="discount" type="number" name="discount['+barang[index]["ID_PAKET"]+']" value="0" oninput="recount(\''+barang[index]["ID_PAKET"]+'\')" id="discount'+barang[index]["ID_PAKET"]+'" style="background:primary; border:none; text-align:left; width=100%" readonly>';	
 		cell7.innerHTML = '<input type="hidden" class="subtotal" name="subtotal['+barang[index]["ID_PAKET"]+']" value="'+barang[index]["HARGA_JUAL"]+'" id="subtotal'+barang[index]["ID_PAKET"]+'"><span id="subtotalval'+barang[index]["ID_PAKET"]+'">'+barang[index]["HARGA_JUAL"]+'</span>';
 		cell8.innerHTML = '<button onclick="hapusEl(\''+id+'\')" class="btn btn-danger btn-block text-uppercase">X</button>';
 		total();
@@ -333,6 +334,7 @@ var barang = <?php echo json_encode($paket_wisata); ?>;
 		document.getElementById("myText").value = "";
 	}
 	function hapusEl(idCol) {
+    $("#btnchoose").show();
 		document.getElementById(idCol).remove();
 		total();
 	}

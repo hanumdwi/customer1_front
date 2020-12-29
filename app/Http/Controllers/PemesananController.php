@@ -422,6 +422,7 @@ class PemesananController extends Controller
         ->where('TGL_SEWA', '>=', request()->tgl)
         ->where('TGL_AKHIR_SEWA', '<=', request()->tgl)
         ->where('ID_CATEGORY', '=', request()->cat1)
+        ->where('STATUS_ARMADA','=', 0)
         ->select('vw_listallschedule.ID_PRICELIST')
         ->get();
         $array = json_decode(json_encode($x),true);
