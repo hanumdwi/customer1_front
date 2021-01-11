@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Contact;
 use Illuminate\Http\Request;
+use DB;
 
 class ContactController extends Controller
 {
@@ -14,7 +15,10 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
+        $testimony=DB::table('testimony')->get();
+
+
+        return view('home', ['testimony'=>$testimony]);
     }
 
     /**
@@ -35,7 +39,12 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::table('testimony')->insert([
+            'NAMA_TESTI'   => $request->NAMA_TESTI,
+            'TESTIMONY'    => $request->TESTIMONY
+        ]);
+     
+        return redirect('contact');
     }
 
     /**

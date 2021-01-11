@@ -71,11 +71,11 @@
               <div class="dropdown-menu" aria-labelledby="dropdown04">
               	<a class="dropdown-item" href="{{ url('detailbus') }}">Armada</a>
                 <!-- <a class="dropdown-item" href="{{ url('detailbus') }}">Informasi Armada</a> -->
-                <a class="dropdown-item" href="{{ url('detailpaket') }}">Paket Wisata</a>
+                <!-- <a class="dropdown-item" href="{{ url('detailpaket') }}">Paket Wisata</a> -->
                 <!-- <a class="dropdown-item" href="{{ url('detailpaket') }}">Informasi Paket Wisata</a> -->
                 <!-- <a class="dropdown-item" href="{{ url('cart') }}">Cart</a> -->
                 <a class="dropdown-item" href="{{ url('pemesanan') }}">Booking Bus</a>
-                <a class="dropdown-item" href="{{ url('pemesanan_paket') }}">Booking Packages</a>
+                <!-- <a class="dropdown-item" href="{{ url('pemesanan_paket') }}">Booking Packages</a> -->
               </div>
             </li>
 	          <li class="nav-item"><a href="{{ url('about') }}" class="nav-link">About</a></li>
@@ -199,7 +199,7 @@
 <script>
  $(function() {
   $('#WAButton').floatingWhatsApp({
-    phone: '6281230851477', //WhatsApp Business phone number International format-
+    phone: '6282363306033', //WhatsApp Business phone number International format-
     //Get it with Toky at https://toky.co/en/features/whatsapp.
     headerTitle: 'Chat with us on WhatsApp!', //Popup Title
     popupMessage: 'Hello, how can we help you?', //Popup Message

@@ -24,6 +24,7 @@
           <div class="row">
             <div class="col-md-12 text-center">
               <h1>Formulir Pemesanan Sewa Armada</h1>
+              <p style="font-danger">* Harga sudah termasuk biaya bensin dan biaya sopir</p>
               <hr>
             </div>
         <div class="col-md-8 text-left">

@@ -39,21 +39,22 @@
 								<a href="#" class="mr-2" style="color: #000;">500 <span style="color: #bbb;">Sold</span></a>
 							</p> -->
 					</div>
-                            <p class="price"><span>59 Seats</span></p>
-                            <p>Berikut daftar fasilitas big bus pariwisata yang perlu Anda ketahui :</p>
-                                <p>Full AC</p>
-                                <p>TV</p>
-                                <p>DVD Player</p>
-                                <p>Karaoke</p>
-                                <p>Reclining Seat 3-2 atau 2-2</p>
-                                <p>Hand Rest</p>
-                                <p>Terminal Listrik</p>
-                                <p>Cool Box*</p>
-                                <p>Dispenser*</p>
-                                <p>Smoking Room*</p>
-                                <p>Toilet*</p>
-                                <p>Bantal Selimut*</p>
-                                <p>WiFi*</p>
+                            <p class="price"><span>61 Seats</span></p>
+                            <p>Berikut daftar fasilitas Big Bus pariwisata yang perlu Anda ketahui :</p>
+                                <p>• RECLINING SEAT 2-2 (KAPASITAS 50 ORANG) REQUEST</p>
+                                <p>• RECLINING SEAT 2-3 (KAPASITAS 61 ORANG)</p>
+                                <p>• TV</p>
+                                <p>• DVD PLAYER</p>
+                                <p>• KARAOKE</p>
+                                <p>• RUNING TEXT</p>
+                                <p>• LAMPU DISKO</p>
+                                <p>• COOL BOX</p>
+                                <p>• BANTAL SELIMUT</p>
+                                <p>• FULL AIR CONDITIONER AC</p>
+                                <p>• LAMPU TIDUR</p>
+                                <p>• STOP KONTAK</p>
+                                <p>• LUBANG USB</p>
+                                <p>• WIFI</p>
                             <!-- <div class="row mt-4">
                                     <div class="col-md-6">
                                         <div class="form-group d-flex">
@@ -117,20 +118,17 @@
 							</p> -->
 					</div>
                             <p class="price"><span>35 Seats</span></p>
-                            <p>Berikut daftar fasilitas big bus pariwisata yang perlu Anda ketahui :</p>
-                                <p>Full AC</p>
-                                <p>TV</p>
-                                <p>DVD Player</p>
-                                <p>Karaoke</p>
-                                <p>Reclining Seat 3-2 atau 2-2</p>
-                                <p>Hand Rest</p>
-                                <p>Terminal Listrik</p>
-                                <p>Cool Box*</p>
-                                <p>Dispenser*</p>
-                                <p>Smoking Room*</p>
-                                <p>Toilet*</p>
-                                <p>Bantal Selimut*</p>
-                                <p>WiFi*</p>
+                            <p>Berikut daftar fasilitas Medium Bus pariwisata yang perlu Anda ketahui :</p>
+                                <p>• RECLINING SEAT 2-2</p>
+                                <p>• KAPASITAS 35 ORANG</p>
+                                <p>• TV</p>
+                                <p>• DVD Player</p>
+                                <p>• KARAOKE</p>
+                                <p>• COOL BOX</p>
+                                <p>• BANTAL SELIMUT</p>
+                                <p>• FULL AIR CONDITIONER AC</p>
+                                <p>• LAMPU TIDUR</p>
+                                <p>• STOP KONTAK</p>
                             <!-- <div class="row mt-4">
                                     <div class="col-md-6">
                                         <div class="form-group d-flex">
@@ -193,21 +191,15 @@
 								<a href="#" class="mr-2" style="color: #000;">500 <span style="color: #bbb;">Sold</span></a>
 							</p> -->
 					</div>
-                            <p class="price"><span>20 Seats</span></p>
-                            <p>Berikut daftar fasilitas big bus pariwisata yang perlu Anda ketahui :</p>
-                                <p>Full AC</p>
-                                <p>TV</p>
-                                <p>DVD Player</p>
-                                <p>Karaoke</p>
-                                <p>Reclining Seat 3-2 atau 2-2</p>
-                                <p>Hand Rest</p>
-                                <p>Terminal Listrik</p>
-                                <p>Cool Box*</p>
-                                <p>Dispenser*</p>
-                                <p>Smoking Room*</p>
-                                <p>Toilet*</p>
-                                <p>Bantal Selimut*</p>
-                                <p>WiFi*</p>
+                            <p class="price"><span>19 Seats</span></p>
+                            <p>Berikut daftar fasilitas Elf Bus pariwisata yang perlu Anda ketahui :</p>
+                                <p>• KAPASITAS 19 ORANG</p>
+                                <p>• TV</p>
+                                <p>• DVD Player</p>
+                                <p>• KARAOKE</p>
+                                <p>• FULL AIR CONDITIONER AC</p>
+                                <p>• LAMPU TIDUR</p>
+                                <p>• STOP KONTAK</p>
                             <!-- <div class="row mt-4">
                                     <div class="col-md-6">
                                         <div class="form-group d-flex">

@@ -13,12 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+// Route::get('/', function () {
+//     return view('home');
+// });
 
+Route::get('home', 'ContactController@index');
 Route::get('about', 'AboutController@index');
 Route::get('contact', 'AboutController@index_contact');
+Route::post('testimony_store', 'ContactController@store');
+
 Route::get('shopbus', 'BusController@show');
 Route::get('detailbus', 'BusController@index');
 Route::get('detailpaket', 'BusController@index_paket');

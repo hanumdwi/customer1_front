@@ -54,7 +54,7 @@
 									<div class="text text-center">
 										<h2>MDC Trans</h2>
 										<p>Protect during your journey</p>
-										<p><a href="#" class="btn btn-danger">Tour now</a></p>
+										<p><a href="{{ url('pemesanan') }}" class="btn btn-danger">Tour now</a></p>
 									</div>
 								</div>
 							</div>
@@ -66,7 +66,7 @@
 								</div>
 								<div class="category-wrap ftco-animate img d-flex align-items-end" style="background-image: url(asset/vegfoods/images/ibu2.jpg);">
 									<div class="text px-3 py-1">
-										<h2 class="mb-0"><a href="#">Tour Ibu - Ibu</a></h2>
+										<h2 class="mb-0"><a href="#">Tour Wali Songo</a></h2>
 									</div>
 								</div>
 							</div>
@@ -81,7 +81,7 @@
 						</div>
 						<div class="category-wrap ftco-animate img d-flex align-items-end" style="background-image: url(asset/vegfoods/images/bapak2.jpeg);">
 							<div class="text px-3 py-1">
-								<h2 class="mb-0"><a href="#">Tour Bapak - Bapak</a></h2>
+								<h2 class="mb-0"><a href="#">Tour Bromo</a></h2>
 							</div>
 						</div>
 					</div>
@@ -202,76 +202,22 @@
         <div class="row ftco-animate">
           <div class="col-md-12">
             <div class="carousel-testimony owl-carousel">
+              @foreach($testimony as $tes)
               <div class="item">
                 <div class="testimony-wrap p-4 pb-5">
-                  <div class="user-img mb-5" style="background-image: url(asset/vegfoods/images/tes1.png)">
+                  <!-- <div class="user-img mb-5" style="background-image: url(asset/vegfoods/images/tes2.png)"> -->
                     <span class="quote d-flex align-items-center justify-content-center">
                       <i class="icon-quote-left"></i>
                     </span>
-                  </div>
+                  <!-- </div> -->
                   <div class="text text-center">
-                    <p class="mb-5 pl-4 line">Tempat sewa bus pariwisata di Lamongan yang paling saya rekomendasikan. Bus terbaru membuat penumpang nyaman dalam perjalanan.</p>
-                    <p class="name">Our Customer</p>
-                    <!-- <span class="position">Marketing Manager</span> -->
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap p-4 pb-5">
-                  <div class="user-img mb-5" style="background-image: url(asset/vegfoods/images/tes2.png)">
-                    <span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span>
-                  </div>
-                  <div class="text text-center">
-                    <p class="mb-5 pl-4 line">lokasi bersih luas bisnya bagus dan baru.</p>
-                    <p class="name">Our Customer</p>
+                    <p class="mb-5 pl-4 line">{{$tes->TESTIMONY}}</p>
+                    <p class="name">{{$tes->NAMA_TESTI}}</p>
                     <!-- <span class="position">Interface Designer</span> -->
                   </div>
                 </div>
               </div>
-              <div class="item">
-                <div class="testimony-wrap p-4 pb-5">
-                  <div class="user-img mb-5" style="background-image: url(asset/vegfoods/imagestes3.png)">
-                    <span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span>
-                  </div>
-                  <div class="text text-center">
-                    <p class="mb-5 pl-4 line">Tempat saiya bekerja tuk mencari nafkah.</p>
-                    <p class="name">Our Customer</p>
-                    <!-- <span class="position">UI Designer</span> -->
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap p-4 pb-5">
-                  <div class="user-img mb-5" style="background-image: url(asset/vegfoods/images/TES4.png)">
-                    <span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span>
-                  </div>
-                  <div class="text text-center">
-                    <p class="mb-5 pl-4 line">Paling nyaman, bikin nagih mau tour terus.</p>
-                    <p class="name">Our Customer</p>
-                    <!-- <span class="position">Web Developer</span> -->
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap p-4 pb-5">
-                  <div class="user-img mb-5" style="background-image: url(asset/vegfoods/images/TES4.png)">
-                    <span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span>
-                  </div>
-                  <div class="text text-center">
-                    <p class="mb-5 pl-4 line">See you next holiday MDC Trans Lamongan.</p>
-                    <p class="name">Our Customer</p>
-                    <!-- <span class="position">System Analyst</span> -->
-                  </div>
-                </div>
-              </div>
+              @endforeach
             </div>
           </div>
         </div>

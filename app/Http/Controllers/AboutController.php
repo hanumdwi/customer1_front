@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\About;
 use Illuminate\Http\Request;
+use DB;
 
 class AboutController extends Controller
 {
@@ -14,7 +15,10 @@ class AboutController extends Controller
      */
     public function index()
     {
-        return view('about');
+        $testimony=DB::table('testimony')->get();
+
+
+        return view('about', ['testimony'=>$testimony]);
     }
 
     public function index_contact()
